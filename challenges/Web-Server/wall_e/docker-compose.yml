@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  chall:
+    container_name: "wall-e"
+    build: .
+    ports:
+      - "80:80"

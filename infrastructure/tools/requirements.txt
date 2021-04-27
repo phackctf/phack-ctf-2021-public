@@ -1,0 +1,7 @@
+bs4
+requests
+lxml
+Jinja2
+toml
+discord.py
+click

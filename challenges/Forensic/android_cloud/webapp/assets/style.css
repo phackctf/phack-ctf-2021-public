@@ -1,0 +1,349 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+* {
+	box-sizing: border-box;
+	-webkit-user-select: none;
+	user-select: none;
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
+	tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	min-height: 450px;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+footer {
+	position: absolute;
+    bottom: 0;
+    left: 20px;
+    color: #8e8e8e;
+    font-family: 'Roboto';
+    font-size: 12px;
+}
+
+footer a {
+	color: #8e8e8e;
+}
+
+#congrats {
+	padding-top: 20px;
+	font-family: Roboto;
+	color: #292829;
+}
+
+#mockup {
+	display: block;
+	position: absolute;
+	/* width: 1920px; */
+	/* height: 1080px; */
+	width: 100%;
+	height: 100%;
+	background: url(./images/phone-back-light-lock.png);
+	background-size: auto 100%;
+	background-position-x: center;
+}
+
+#root {
+	/* position: absolute; */
+	/* margin-left: 810px; */
+	position: relative;
+	margin: 0 auto;
+	width: 300px;
+	height: 100%;
+}
+.phone {
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	padding-bottom: 90%;
+}
+.phone > div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+}
+.phone .main {
+	justify-content: space-between;
+}
+.pattern {
+	transform: translateY(100%);
+	transition: all 200ms linear;
+	justify-content: flex-end;
+	display: flex;
+	flex-direction: column;
+	cursor: pointer;
+}
+
+.pattern.set {
+	transform: translateY(0);
+	transition: none;
+	height: 100%;
+	background: transparent;
+}
+
+.pattern.animate {
+	transform: translateY(0);
+}
+.pattern.animate.done {
+	transform: translateY(-50%);
+	opacity  : 0;
+}
+
+.pattern.animate .pattern-outer > div {
+	transform: scale(1) translateY(0);
+}
+.pattern .pattern-outer > div {
+	transform: scale(0) translateY(50px);
+	transition-duration: 200ms;
+	transition-property: transform;
+}
+
+.pattern .pattern-outer > div:nth-child(3) {
+	transition-delay: 100ms;
+}
+.pattern .pattern-outer > div:nth-child(4) {
+	transition-delay: 100ms;
+}
+.pattern .pattern-outer > div:nth-child(5) {
+	transition-delay: 150ms;
+}
+.pattern .pattern-outer > div:nth-child(6) {
+	transition-delay: 200ms;
+}
+.pattern .pattern-outer > div:nth-child(7) {
+	transition-delay: 150ms;
+}
+.pattern .pattern-outer > div:nth-child(8) {
+	transition-delay: 220ms;
+}
+.pattern .pattern-outer > div:nth-child(9) {
+	transition-delay: 250ms;
+}
+
+
+.pattern-outer {
+	width: 100%;
+	max-width: 400px;
+	max-height: 400px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	position: relative;
+}
+.pattern-outer .error-text {
+	position: absolute;
+	top: 0px;
+	left: 0;
+	color: #FFF;
+	font-family: Roboto, sans-serif;
+	text-align: center;
+	width: 100%;
+	font-size: 14px;
+}
+
+.pattern-outer .label {
+	position: absolute;
+	top: -50px;
+	left: 0;
+	color: #FFF;
+	font-family: Roboto, sans-serif;
+	text-align: center;
+	width: 100%;
+	font-size: 16px;
+	text-align: center;
+}
+.pattern-outer > div:not(.path):not(.error-text):not(.label) {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 33.3%;
+	min-height: 33.3%;
+	flex: 1 0 33.3%;
+	flex-wrap: wrap;
+}
+.pattern-outer > div:not(.path) > div {
+	padding: 20px;
+}
+.pattern-outer > div:not(.path) > div > div {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: #fff;
+}
+.pattern-outer > div:not(.path) > div.error > div {
+	background: #F4511E;
+}
+
+.pop {
+	animation: pop 300ms ease;
+}
+
+.pattern-outer > .path {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 300px;
+	height: 100%;
+	pointer-events: none;
+}
+
+.pattern-outer > .path > div {
+	background: #fff;
+	position: absolute;
+	height: 2px;
+	transform-origin: 0;
+}
+
+
+
+.pattern-outer > .path.error > div {
+	background: #F4511E;
+}
+
+.watch-outer {
+	display: flex;
+	flex-direction: column;
+	color: #FFF;
+	margin-top: 150px;
+	font-family: Roboto, sans-serif;
+	font-weight: 300;
+}
+
+.watch-outer .time {
+	font-size: 82px;	
+	text-align: center;
+}
+
+.watch-outer .date {
+	text-align: center;
+	font-size: 16px;
+	text-transform: uppercase;
+}
+
+.header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	padding: 15px 15px 0;
+	color: #FFF;
+	font-family: Roboto, sans-serif;
+	font-size: 14px;
+	line-height: 20px;
+}
+.header .battery {
+	display: flex;
+}
+.header .battery > div:first-child {
+	width: 15px;
+	height: 20px;
+	background: rgba(0, 0, 0, 0.3);
+	margin-right: 5px;
+	position: relative;
+}
+.header .battery > div:first-child > div {
+	background: #FFF;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+}
+.header .battery > div:first-child::before {
+	content: "";
+	width: 8px;
+	height: 3px;
+	position: absolute;
+	top: -3px;
+	left: calc(50% - 4px);
+	background: rgba(0, 0, 0, 0.3);
+}
+.unlock-icon {
+	width: 100%;
+	margin-bottom: 22px;
+}
+.unlock-icon > div {
+	width: 25px;
+	height: 25px;
+	margin: 0 auto;
+	background: url(http://i.imgur.com/e18eVRM.png);
+	background-size: cover;
+	position: relative;
+	opacity: 0.5;
+}
+
+.unlock-icon > div::before {
+	content: "";
+	position: absolute;
+	top: -10px;
+	left: -10px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: rgba(255, 255, 255, 0.2);
+	width: 41px;
+	height: 41px;
+	border-radius: 50%;
+	animation: pulse 1500ms ease infinite;
+}
+
+
+.credits {
+	font-family: Roboto, sans-serif;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	text-align: center;
+	padding: 50px;
+}
+
+.credits h1 {
+	position: relative;
+	font-weight: bold;
+	font-size: 250%;
+	color: rgb(22, 45, 74);
+}
+
+.credits > div {
+	position: relative;
+	top: -50px;
+	left: -50px;
+}
+
+.credits > div > div {
+	font-weight: bold;
+}
+.credits a {
+	text-decoration: none;
+	color: white;
+	position: absolute;
+	bottom: 10px;
+	right: 20px;
+}
+
+@keyframes pulse {
+	from { 
+		transform: scale(1);
+		border-color: rgba(255, 255, 255, 0.3);
+	}
+	50% {
+		transform: scale(1.15);
+		border-color: rgba(255, 255, 255, 0.5);
+	}
+	to {
+		transform: scale(1);
+		border-color: rgba(255, 255, 255, 0.3);
+	}
+}
+
+@keyframes pop {
+	from { transform: scale(1) }
+	50% { transform: scale(2) }
+	to { transform: scale(1) }
+}

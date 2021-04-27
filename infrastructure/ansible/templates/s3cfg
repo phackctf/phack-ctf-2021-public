@@ -1,0 +1,9 @@
+[default]
+signature = s3v4
+bucket_location = fr-par
+host_base = https://s3.fr-par.scw.cloud
+host_bucket = https://s3.fr-par.scw.cloud
+
+# Login credentials
+access_key = {{ s3_access_key }}
+secret_key = {{ s3_secret_key }}

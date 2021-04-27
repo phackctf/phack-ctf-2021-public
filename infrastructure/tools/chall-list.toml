@@ -1,0 +1,44 @@
+# =============================================================================
+# List challs which should be deployed on
+# individual teams machines.
+# =============================================================================
+
+[challs]
+
+    Web-Server = [
+        'agenda',
+        'agenda_2',
+        'fuzz_me',
+        'harduino',
+        'hello_world',
+        'phacktory',
+        'the_faceboox',
+        'vod',
+        'wall_e',
+        'wapiti',
+        'x_tension'
+    ]
+
+    Network = [
+        'portes_ouvertes'
+    ]
+
+    Programmation = [
+        'a_maze_ing',
+        'ben_and_harry'
+    ]
+
+    Systeme = [
+        'sudoku',
+        'sudoku_2',
+        'graduated',
+        'toBOrNot2B'
+    ]
+
+    Osint = [
+        'mr_weak'
+    ]
+
+    Forensic = [
+        'android_cloud'
+    ]

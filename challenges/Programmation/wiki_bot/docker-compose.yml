@@ -1,0 +1,5 @@
+version: "3.8"
+services:
+  chall:
+    container_name: "wiki_bot"
+    build: .    

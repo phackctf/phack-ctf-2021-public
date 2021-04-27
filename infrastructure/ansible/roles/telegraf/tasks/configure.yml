@@ -1,0 +1,21 @@
+---
+- name: Remove Telegraf default conf file
+  file:
+    path: "{{ telegraf_conf_file }}"
+    state: absent
+
+- name: Copy custom main config file
+  template:
+    src: "telegraf.conf.j2"
+    dest: "{{ telegraf_conf_file }}"
+
+- name: adding user telegraf to docker group
+  user:
+    name: telegraf
+    groups: ['docker']
+    append: yes
+
+- name: Restart telegraf service
+  service:
+    name: telegraf
+    state: restarted

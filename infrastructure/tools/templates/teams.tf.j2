@@ -1,0 +1,17 @@
+# =============================================================================
+# THIS FILE HAS BEEN GENERATED USING JINJA TEMPLATING
+# DO NOT EDIT MANUALLY
+# =============================================================================
+
+{% for team in teams %}
+resource "scaleway_instance_ip" "team{{ loop.index }}_instance_ip" {}
+
+resource "scaleway_instance_server" "team{{ loop.index }}_instance_server" {
+  type = "DEV1-S"
+  image = "ubuntu_focal"
+  ip_id = scaleway_instance_ip.team{{ loop.index }}_instance_ip.id
+  security_group_id = scaleway_instance_security_group.vpn.id
+  tags = [ "teams", "team={{ team[0] }}", "team_members={{ team[1] | join(',') }}" ]
+  name = "{{ team[0] }}"
+}
+{% endfor %}

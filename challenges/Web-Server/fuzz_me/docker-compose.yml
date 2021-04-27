@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  chall:
+    container_name: "fuzz-me"
+    build: .
+    ports:
+      - "80:80"

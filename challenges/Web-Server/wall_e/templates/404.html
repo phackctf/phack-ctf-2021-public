@@ -1,0 +1,8 @@
+{% block title %}Page Not Found{% endblock %}
+{% block body %}
+
+  <h1>Oops! Cette page n'existe plus.</h1>
+  <a href="{{ url_for('index') }}"><p>Cliquer ici</a>pour revenir à la page principale</p>
+
+<!-- {{ url_for('index') }} is a var which returns url of index.html-->
+{% endblock %}

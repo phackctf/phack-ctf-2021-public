@@ -1,0 +1,324 @@
+# =============================================================================
+# THIS FILE HAS BEEN GENERATED USING JINJA TEMPLATING
+# DO NOT EDIT MANUALLY
+# =============================================================================
+
+name: Challenges
+
+on:
+  push:
+    branches: [ never ] # Changed to "never" after CTF
+  workflow_dispatch:
+    inputs:
+      challenge:
+        description: 'Challenge to build (or "all")'
+        required: false
+      deploy:
+        description: 'Set "yes" to deploy'
+        required: false
+
+jobs:
+  # This job checks which challenge needs to be build
+  changes_checker:
+    runs-on: ubuntu-latest
+    outputs:
+      agenda: ${{ steps.filter.outputs.agenda }}
+      agenda_2: ${{ steps.filter.outputs.agenda_2 }}
+      fuzz_me: ${{ steps.filter.outputs.fuzz_me }}
+      harduino: ${{ steps.filter.outputs.harduino }}
+      hello_world: ${{ steps.filter.outputs.hello_world }}
+      phacktory: ${{ steps.filter.outputs.phacktory }}
+      the_faceboox: ${{ steps.filter.outputs.the_faceboox }}
+      vod: ${{ steps.filter.outputs.vod }}
+      wall_e: ${{ steps.filter.outputs.wall_e }}
+      wapiti: ${{ steps.filter.outputs.wapiti }}
+      x_tension: ${{ steps.filter.outputs.x_tension }}
+      portes_ouvertes: ${{ steps.filter.outputs.portes_ouvertes }}
+      a_maze_ing: ${{ steps.filter.outputs.a_maze_ing }}
+      ben_and_harry: ${{ steps.filter.outputs.ben_and_harry }}
+      sudoku: ${{ steps.filter.outputs.sudoku }}
+      sudoku_2: ${{ steps.filter.outputs.sudoku_2 }}
+      graduated: ${{ steps.filter.outputs.graduated }}
+      toBOrNot2B: ${{ steps.filter.outputs.toBOrNot2B }}
+      mr_weak: ${{ steps.filter.outputs.mr_weak }}
+      android_lock: ${{ steps.filter.outputs.android_lock }}
+      wiki_bot: ${{ steps.filter.outputs.wiki_bot }}
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: dorny/paths-filter@v2
+      id: filter
+      with:
+        filters: |
+          agenda:
+            - 'challenges/Web-Server/agenda/**'
+          agenda_2:
+            - 'challenges/Web-Server/agenda_2/**'
+          fuzz_me:
+            - 'challenges/Web-Server/fuzz_me/**'
+          harduino:
+            - 'challenges/Web-Server/harduino/**'
+          hello_world:
+            - 'challenges/Web-Server/hello_world/**'
+          phacktory:
+            - 'challenges/Web-Server/phacktory/**'
+          the_faceboox:
+            - 'challenges/Web-Server/the_faceboox/**'
+          vod:
+            - 'challenges/Web-Server/vod/**'
+          wall_e:
+            - 'challenges/Web-Server/wall_e/**'
+          wapiti:
+            - 'challenges/Web-Server/wapiti/**'
+          x_tension:
+            - 'challenges/Web-Server/x_tension/**'
+          portes_ouvertes:
+            - 'challenges/Network/portes_ouvertes/**'
+          a_maze_ing:
+            - 'challenges/Programmation/a_maze_ing/**'
+          ben_and_harry:
+            - 'challenges/Programmation/ben_and_harry/**'
+          sudoku:
+            - 'challenges/Systeme/sudoku/**'
+          sudoku_2:
+            - 'challenges/Systeme/sudoku_2/**'
+          graduated:
+            - 'challenges/Systeme/graduated/**'
+          toBOrNot2B:
+            - 'challenges/Systeme/toBOrNot2B/**'
+          mr_weak:
+            - 'challenges/Osint/mr_weak/**'
+          android_lock:
+            - 'challenges/Forensic/android_lock/**'
+          wiki_bot:
+            - 'challenges/Programmation/wiki_bot/**'
+
+  build:
+    needs: changes_checker
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Login to phackctf registry
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ secrets.REGISTRY_URL }}
+          username: nologin
+          password: ${{ secrets.REGISTRY_TOKEN }}
+      - name: Build and push agenda backend
+        if: ${{ needs.changes_checker.outputs.agenda == 'true' || github.event.inputs.challenge == 'agenda' || github.event.inputs.challenge == 'all' }}
+        id: docker_build_agenda_backend
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: ./challenges/Web-Server/agenda/backend
+          tags: ${{ secrets.REGISTRY_URL }}/agenda_backend:latest
+      - name: Build and push agenda frontend
+        if: ${{ needs.changes_checker.outputs.agenda == 'true' || github.event.inputs.challenge == 'agenda' || github.event.inputs.challenge == 'all' }}
+        id: docker_build_agenda_frontend
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: ./challenges/Web-Server/agenda/frontend
+          tags: ${{ secrets.REGISTRY_URL }}/agenda_frontend:latest
+      - name: Build and push agenda_backend_2
+        if: ${{ needs.changes_checker.outputs.agenda_2 == 'true' || github.event.inputs.challenge == 'agenda_2' || github.event.inputs.challenge == 'all' }}
+        id: docker_build_agenda_backend_2
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: ./challenges/Web-Server/agenda_2/backend
+          tags: ${{ secrets.REGISTRY_URL }}/agenda_2_backend:latest
+      - name: Build and push agenda_frontend_2
+        if: ${{ needs.changes_checker.outputs.agenda_2 == 'true' || github.event.inputs.challenge == 'agenda_2' || github.event.inputs.challenge == 'all' }}
+        id: docker_build_agenda_frontend_2
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: ./challenges/Web-Server/agenda_2/frontend
+          tags: ${{ secrets.REGISTRY_URL }}/agenda_2_frontend:latest
+      - name: Build and push fuzz_me
+        if: ${{ needs.changes_checker.outputs.fuzz_me == 'true' || github.event.inputs.challenge == 'fuzz_me' || github.event.inputs.challenge == 'all' }}
+        id: docker_build_fuzz_me
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: ./challenges/Web-Server/fuzz_me
+          tags: ${{ secrets.REGISTRY_URL }}/fuzz_me:latest
+      - name: Build and push harduino
+        if: ${{ needs.changes_checker.outputs.harduino == 'true' || github.event.inputs.challenge == 'harduino' || github.event.inputs.challenge == 'all' }}
+        id: docker_build_harduino
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: ./challenges/Web-Server/harduino
+          tags: ${{ secrets.REGISTRY_URL }}/harduino:latest
+      - name: Build and push hello_world
+        if: ${{ needs.changes_checker.outputs.hello_world == 'true' || github.event.inputs.challenge == 'hello_world' || github.event.inputs.challenge == 'all' }}
+        id: docker_build_hello_world
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: ./challenges/Web-Server/hello_world
+          tags: ${{ secrets.REGISTRY_URL }}/hello_world:latest
+      - name: Build and push phacktory
+        if: ${{ needs.changes_checker.outputs.phacktory == 'true' || github.event.inputs.challenge == 'phacktory' || github.event.inputs.challenge == 'all' }}
+        id: docker_build_phacktory
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: ./challenges/Web-Server/phacktory
+          tags: ${{ secrets.REGISTRY_URL }}/phacktory:latest
+      - name: Build and push the_faceboox
+        if: ${{ needs.changes_checker.outputs.the_faceboox == 'true' || github.event.inputs.challenge == 'the_faceboox' || github.event.inputs.challenge == 'all' }}
+        id: docker_build_the_faceboox
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: ./challenges/Web-Server/the_faceboox
+          tags: ${{ secrets.REGISTRY_URL }}/the_faceboox:latest
+      - name: Build and push vod
+        if: ${{ needs.changes_checker.outputs.vod == 'true' || github.event.inputs.challenge == 'vod' || github.event.inputs.challenge == 'all' }}
+        id: docker_build_vod
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: ./challenges/Web-Server/vod
+          tags: ${{ secrets.REGISTRY_URL }}/vod:latest
+      - name: Build and push wall_e
+        if: ${{ needs.changes_checker.outputs.wall_e == 'true' || github.event.inputs.challenge == 'wall_e' || github.event.inputs.challenge == 'all' }}
+        id: docker_build_wall_e
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: ./challenges/Web-Server/wall_e
+          tags: ${{ secrets.REGISTRY_URL }}/wall_e:latest
+      - name: Build and push wapiti-elasticsearch
+        if: ${{ needs.changes_checker.outputs.wapiti == 'true' || github.event.inputs.challenge == 'wapiti' || github.event.inputs.challenge == 'all' }}
+        id: docker_build_wapiti_es
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: ./challenges/Web-Server/wapiti/Elastic
+          tags: ${{ secrets.REGISTRY_URL }}/wapiti-elasticsearch:latest
+      - name: Build and push wapiti-kibana
+        if: ${{ needs.changes_checker.outputs.wapiti == 'true' || github.event.inputs.challenge == 'wapiti' || github.event.inputs.challenge == 'all' }}
+        id: docker_build_wapiti_kibana
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: ./challenges/Web-Server/wapiti/Kibana
+          tags: ${{ secrets.REGISTRY_URL }}/wapiti-kibana:latest
+      - name: Build and push x_tension
+        if: ${{ needs.changes_checker.outputs.x_tension == 'true' || github.event.inputs.challenge == 'x_tension' || github.event.inputs.challenge == 'all' }}
+        id: docker_build_x_tension
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: ./challenges/Web-Server/x_tension
+          tags: ${{ secrets.REGISTRY_URL }}/x_tension:latest
+      - name: Build and push portes_ouvertes
+        if: ${{ needs.changes_checker.outputs.portes_ouvertes == 'true' || github.event.inputs.challenge == 'portes_ouvertes' || github.event.inputs.challenge == 'all' }}
+        id: docker_build_portes_ouvertes
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: ./challenges/Network/portes_ouvertes
+          tags: ${{ secrets.REGISTRY_URL }}/portes_ouvertes:latest
+      - name: Build and push a_maze_ing
+        if: ${{ needs.changes_checker.outputs.a_maze_ing == 'true' || github.event.inputs.challenge == 'a_maze_ing' || github.event.inputs.challenge == 'all' }}
+        id: docker_build_a_maze_ing
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: ./challenges/Programmation/a_maze_ing
+          tags: ${{ secrets.REGISTRY_URL }}/a_maze_ing:latest
+      - name: Build and push ben_and_harry
+        if: ${{ needs.changes_checker.outputs.ben_and_harry == 'true' || github.event.inputs.challenge == 'ben_and_harry' || github.event.inputs.challenge == 'all' }}
+        id: docker_build_ben_and_harry
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: ./challenges/Programmation/ben_and_harry
+          tags: ${{ secrets.REGISTRY_URL }}/ben_and_harry:latest
+      - name: Build and push sudoku
+        if: ${{ needs.changes_checker.outputs.sudoku == 'true' || github.event.inputs.challenge == 'sudoku' || github.event.inputs.challenge == 'all' }}
+        id: docker_build_sudoku
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: ./challenges/Systeme/sudoku
+          tags: ${{ secrets.REGISTRY_URL }}/sudoku:latest
+      - name: Build and push sudoku_2
+        if: ${{ needs.changes_checker.outputs.sudoku_2 == 'true' || github.event.inputs.challenge == 'sudoku_2' || github.event.inputs.challenge == 'all' }}
+        id: docker_build_sudoku_2
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: ./challenges/Systeme/sudoku_2
+          tags: ${{ secrets.REGISTRY_URL }}/sudoku_2:latest
+      - name: Build and push graduated
+        if: ${{ needs.changes_checker.outputs.graduated == 'true' || github.event.inputs.challenge == 'graduated' || github.event.inputs.challenge == 'all' }}
+        id: docker_build_graduated
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: ./challenges/Systeme/graduated
+          tags: ${{ secrets.REGISTRY_URL }}/graduated:latest
+      - name: Build and push toBOrNot2B
+        if: ${{ needs.changes_checker.outputs.toBOrNot2B == 'true' || github.event.inputs.challenge == 'toBOrNot2B' || github.event.inputs.challenge == 'all' }}
+        id: docker_build_toBOrNot2B
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: ./challenges/Systeme/toBOrNot2B
+          tags: ${{ secrets.REGISTRY_URL }}/tobeornot2be:latest
+      - name: Build and push mr_weak
+        if: ${{ needs.changes_checker.outputs.mr_weak == 'true' || github.event.inputs.challenge == 'mr_weak' || github.event.inputs.challenge == 'all' }}
+        id: docker_build_mr_weak
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: ./challenges/Osint/mr_weak/docker
+          tags: ${{ secrets.REGISTRY_URL }}/mr_weak:latest
+      - name: Build and push android_lock
+        if: ${{ needs.changes_checker.outputs.android_lock == 'true' || github.event.inputs.challenge == 'android_lock' || github.event.inputs.challenge == 'all' }}
+        id: docker_build_android_lock
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: ./challenges/Forensic/android_cloud
+          tags: ${{ secrets.REGISTRY_URL }}/android_lock:latest
+      - name: Build and push wiki_bot
+        if: ${{ needs.changes_checker.outputs.wiki_bot == 'true' || github.event.inputs.challenge == 'wiki_bot' || github.event.inputs.challenge == 'all' }}
+        id: docker_build_wiki_bot
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: ./challenges/Programmation/wiki_bot
+          tags: ${{ secrets.REGISTRY_URL }}/wiki_bot:latest
+  deploy:
+    needs: build
+    if: ${{ github.event.inputs.deploy == 'yes' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install ansible
+        run: sudo apt-get install ansible
+      - name: Change permissions for private key file
+        run: chmod 600 ./infrastructure/ansible/github_phack
+      - name: Run playbook
+        uses: dawidd6/action-ansible-playbook@v2
+        with:
+          playbook: playbook.yml
+          directory: ./infrastructure/ansible
+          options: |
+            --verbose
+            --tags challenges
+            --inventory-file inventories/scaleway
+            --key-file github_phack

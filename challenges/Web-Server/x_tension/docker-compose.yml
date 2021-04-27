@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  chall:
+    container_name: "x-tension"
+    build: .
+    ports:
+      - "80:80"

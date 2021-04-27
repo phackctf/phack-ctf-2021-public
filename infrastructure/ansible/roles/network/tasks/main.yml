@@ -1,0 +1,38 @@
+---
+- name: Get private network interface mac
+  shell: ip link show | grep '02:00:00' | awk '{print $2}'
+  register: private_network_mac
+
+- name: Print private network interface mac
+  debug:
+    msg: "Private network mac adresse : {{ private_network_mac.stdout }}"
+  when: not ansible_check_mode
+
+- name: Get private network interface name
+  shell: ip link show | grep -B 1 '02:00:00' | sed -n 1p | awk '{print(substr($2, 1, length($2)-1))}'
+  register: private_network_interface_name
+
+- name: Print private network interface name
+  debug:
+    msg: "Private network interface name: {{ private_network_interface_name.stdout }}"
+  when: not ansible_check_mode
+
+# - name: Down private network interface
+#   shell: "ip link set down dev {{ private_network_interface_name.stdout }}"
+#   when: not ansible_check_mode and private_network_interface_name.stdout != "priv0"
+
+- name: Rename private network interface to priv0
+  shell: "ip link set name priv0 dev {{ private_network_interface_name.stdout }}"
+  when: not ansible_check_mode and private_network_interface_name.stdout != "priv0"
+
+- name: Up private network interface
+  shell: ip link set up dev priv0
+  when: not ansible_check_mode and private_network_interface_name.stdout != "priv0"
+
+- name: Upload private ip configuration
+  template:
+    src: 00-installer-config.yaml
+    dest: /etc/netplan/00-installer-config.yaml
+
+- name: Apply private ip configuration
+  shell: netplan apply

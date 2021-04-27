@@ -1,0 +1,94 @@
+---
+# =======================================
+# Any host
+# =======================================
+
+- hosts: ['all']
+  tags:
+    - all
+  roles:
+    - common
+    - docker
+    - network
+
+# =======================================
+# Configure / update ctfd
+# =======================================
+
+- hosts: ['ctfd']
+  tags:
+    - ctfd
+  roles:
+    - ctfd
+  vars:
+    ctfd_db_password: 
+    s3_access_key: 
+    s3_secret_key: 
+    
+# =======================================
+# Configure / update ctfd
+#
+# Update : unused for manual setup
+# =======================================
+
+# - hosts: ['monitoring']
+#   tags:
+#     - monitoring
+#   roles:
+#     - monitoring
+#   vars:
+#     grafana_password: 
+
+# =======================================
+# Configure team machines after creation
+# =======================================
+
+- name: Configure team machines
+  hosts: ['teams']
+  tags:
+    - teams
+    - configure-teams
+  roles:
+     - common
+     - docker
+     - teams
+  vars:
+    openvpn_server_passphrase: 
+
+# =======================================
+# Deploy latest challenges version to
+# teams machines
+# =======================================
+
+- name: Deploy challenges to team machines
+  hosts: ['teams']
+  tags:
+    - teams
+    - deploy-teams
+  roles:
+     - deploy
+
+# =======================================
+# Install telegraf agent on every
+# team machine
+# =======================================
+
+- name: Configure telegraph on teams machines
+  hosts: ['teams']
+  tags:
+    - tomonitor
+    - teams
+  roles:
+    - telegraf
+
+# =======================================
+# Setup mutualized challenge VM
+# =======================================
+
+- hosts: ['challenges']
+  tags:
+    - standalone
+  roles:
+    - common
+    - docker
+    - challenges

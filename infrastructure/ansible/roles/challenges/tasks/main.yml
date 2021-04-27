@@ -1,0 +1,16 @@
+---
+- name: Create challenges directory
+  file:
+    state: directory
+    name: ~/challenges
+
+- name: Upload challenges compose file
+  template:
+    src: docker-compose.yml
+    dest: ~/challenges/docker-compose.yml
+
+- name: Pull latest challenges
+  shell: docker-compose -f ~/challenges/docker-compose.yml pull
+
+- name: Start challenges
+  shell: docker-compose -f ~/challenges/docker-compose.yml up -d

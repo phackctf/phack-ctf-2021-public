@@ -1,0 +1,52 @@
+.chal-desc {
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 14px
+}
+
+.chal-desc img {
+    max-width: 100%;
+    height: auto
+}
+
+.modal-content {
+    border-radius: 0;
+    max-width: 1000px;
+    padding: 1em;
+    margin: 0 auto
+}
+
+.badge-info, .btn-info {
+    background-color: #5b7290!important
+}
+
+.challenge-button {
+    /* box-shadow: 3px 3px 3px grey */
+    border: 1px solid white;
+}
+
+.challenge-button:hover {
+    border: 1px solid white;
+}
+
+.solved-challenge {
+    background-color: #37d63e!important;
+    color: white;
+    opacity: .8;
+    /* border: none */
+}
+
+.solved-challenge:hover {
+    opacity: .9;
+}
+
+.corner-button-check {
+    margin-top: -10px;
+    margin-right: 25px;
+    position: absolute;
+    right: 0
+}
+
+.key-submit .btn {
+    height: 100%
+}

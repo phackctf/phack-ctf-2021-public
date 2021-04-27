@@ -1,0 +1,8 @@
+---
+
+telegraf_conf_file: "/etc/telegraf/telegraf.conf"
+telegraf_user: "telegraf"
+telegraf_password: "REMOVED"
+
+influxdb: "sondes_teams"
+influxurl: "http://monitoring.phack.fr:8086"

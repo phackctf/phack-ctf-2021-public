@@ -1,0 +1,103 @@
+<!-- Awesome orginal design work by Shadow Scientist (https://codepen.io/shadow-scientist/pen/pobqepZ) -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Harduino</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css'>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" href="./favicon.ico">
+</head>
+
+<body>
+
+  <body onresize="onResize()">
+    <header>
+      <div id="brand">
+        <nav class="navbar navbar-light"><a class="navbar-brand" href="#"><i class="fa fa-code"
+              aria-hidden="true"></i><span id="file-ref">workspace/apps/arduino/arduino.php</span><i>
+              (read-only)</i></a></nav>
+      </div>
+      <div id="navigation">
+        <div class="btn-group-md" role="group" aria-label="Run Save Share Settings Group">
+          <button class="btn btn-outline-primary" id="run" type="submit" onclick="run()"><i class="fa fa-play"
+              aria-hidden="true"></i><span class="d-none d-md-inline-block">Run</span></button>
+          <div class="btn-group" role="group">
+            <button class="btn btn-outline-secondary dropdown-toggle" id="save" type="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-cloud" aria-hidden="true"></i><span
+                class="d-none d-md-inline-block">Save</span></button>
+            <div class="dropdown-menu" aria-labelledby="save">
+              <button class="dropdown-item" id="download" disabled>Download</button>
+              <button class="dropdown-item" id="savepublic" disabled>Save Public</button>
+              <button class="dropdown-item" id="saveprivate" disabled>Save Private</button>
+            </div>
+          </div>
+          <button class="btn btn-outline-secondary" id="settings" type="submit" data-toggle="modal"
+            data-target="#settingsModal"><i class="fa fa-cog" aria-hidden="true"></i><span
+              class="d-none d-md-inline-block">Settings</span></button>
+          <div class="modal fade" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="settingsModalLabel">Settings</h4>
+                  <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
+                      aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                  <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item"><a class="nav-link active" id="home-tab" data-toggle="tab" href="#home"
+                        role="tab" aria-controls="home" aria-selected="true">Editor</a></li>
+                    <li class="nav-item"><a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile"
+                        role="tab" aria-controls="profile" aria-selected="false">Layout</a></li>
+                    <li class="nav-item"><a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact"
+                        role="tab" aria-controls="contact" aria-selected="false">Theme</a></li>
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                      Customize Editor Settings</div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Select Layout
+                    </div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">Select Theme
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
+                  <button class="btn btn-primary save" type="button">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div id="root">
+      <div id="ide">
+        <div id="editor" data-mode="php"></div>
+        <div id="console">
+          <iframe id="console-iframe"></iframe>
+        </div>
+      </div>
+    </div>
+  </body>
+  <!-- partial -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/split.js/1.3.5/split.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ace.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ext-language_tools.js'></script>
+  <script src="./script.js"></script>
+  <script>
+    /* Run code snipet */
+    function run() {
+      /* Set iframe `src' attibute (behave like GET request on target php file) */
+      $("#console-iframe").attr("src", $("#file-ref").text())
+    }
+  </script>
+</body>
+
+</html>

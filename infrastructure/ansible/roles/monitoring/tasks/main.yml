@@ -1,0 +1,60 @@
+---
+- name: Create monitoring directory
+  file:
+    state: directory
+    name: ~/monitoring
+
+- name: Create conf folders
+  file:
+    state: directory
+    name: "~/monitoring/{{ item }}"
+  loop:
+    - prometheus
+    - grafana
+    - grafana/provisioning
+    - grafana/provisioning/dashboards
+    - grafana/provisioning/datasources
+    - alertmanager
+
+- name: Upload prometheus conf
+  template:
+    src: prometheus/prometheus.yml
+    dest: ~/monitoring/prometheus/prometheus.yml
+
+- name: Upload prometheus alerts conf
+  template:
+    src: prometheus/alert.rules
+    dest: ~/monitoring/prometheus/alert.rules
+    variable_start_string: "##"
+    variable_end_string: "##"
+
+- name: Upload grafana conf
+  template:
+    src: grafana/conf.monitoring
+    dest: ~/monitoring/grafana/config.monitoring
+
+- name: Upload grafana datasources conf
+  template:
+    src: grafana/provisioning/datasources/datasource.yml
+    dest: ~/monitoring/grafana/provisioning/datasources/datasource.yml
+
+- name: Upload grafana dashboard conf
+  template:
+    src: grafana/provisioning/dashboards/dashboard.yml
+    dest: ~/monitoring/grafana/provisioning/dashboards/dashboard.yml
+
+- name: Upload alertmanager conf
+  template:
+    src: alertmanager/config.yml
+    dest: ~/monitoring/alertmanager/config.yml
+
+- name: Upload monitoring compose file
+  template:
+      src: monitoring-compose.yml
+      dest: ~/monitoring/docker-compose.yml
+
+- name: Pull latest monitoring stack
+  shell: docker-compose -f ~/monitoring/docker-compose.yml pull
+
+- name: Start monitoring stack
+  shell: docker-compose -f ~/monitoring/docker-compose.yml up -d

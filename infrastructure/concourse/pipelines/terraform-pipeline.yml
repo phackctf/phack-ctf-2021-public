@@ -1,0 +1,89 @@
+var_sources:
+- name: credentials
+  type: dummy
+  config:
+    vars:
+      private_key: |
+        -----BEGIN OPENSSH PRIVATE KEY-----
+        [ REMOVED ]
+        -----END OPENSSH PRIVATE KEY-----
+
+resource_types:
+- name: terraform
+  type: docker-image
+  source:
+    repository: ljfranklin/terraform-resource
+    tag: latest
+
+resources:
+  - name: source-code
+    type: git
+    icon: github
+    source:
+      uri: git@github.com:senges/phack-ctf.git
+      branch: "master"
+      private_key: ((credentials:private_key))
+      paths:
+      - infrastructure/terraform/**
+
+  - name: terraform
+    type: terraform
+    source:
+      env_name: prod
+      backend_type: s3
+      backend_config:
+        bucket: "phack-terraform-state"
+        key: "my_state.tfstate"
+        region: fr-par
+        access_key: "[REMOVED]"
+        secret_key: "[REMOVED]"
+        endpoint: "https://s3.fr-par.scw.cloud"
+        skip_credentials_validation: true
+        skip_region_validation: true
+      vars:
+        tag_name: concourse
+      env:
+        AWS_ACCESS_KEY_ID: "[REMOVED]"
+        AWS_SECRET_ACCESS_KEY: "[REMOVED]"
+
+jobs:
+  - name: terraform-plan
+    plan:
+    - get: source-code
+      trigger: true
+    - put: terraform
+      params:
+        env_name: prod
+        terraform_source: source-code/infrastructure/terraform
+        plan_only: true
+
+  - name: terraform-apply
+    plan:
+    - get: source-code
+      trigger: false
+      passed: [terraform-plan]
+    - get: terraform
+      trigger: false
+      passed: [terraform-plan]
+    - put: terraform
+      params:
+        env_name: prod
+        terraform_source: source-code/infrastructure/terraform
+        plan_run: true
+
+  - name: terraform-destroy
+    plan:
+    - get: source-code
+      trigger: false
+      passed: [terraform-plan]
+    - get: terraform
+      trigger: false
+      passed: [terraform-plan]
+    - put: terraform
+      params:
+        env_name: prod
+        terraform_source: source-code/infrastructure/terraform
+        plan_run: true
+        action: destroy
+      get_params:
+        action: destroy

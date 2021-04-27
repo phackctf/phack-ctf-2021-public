@@ -1,0 +1,12 @@
+input[type="checkbox"] {
+	transform: scale(1.5);
+}
+
+label{
+	font-size: 20px;
+}
+
+.container p {
+	font-size: x-large;
+	text-decoration: underline;
+}

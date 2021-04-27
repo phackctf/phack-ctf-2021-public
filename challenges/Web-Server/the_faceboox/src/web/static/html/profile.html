@@ -1,0 +1,546 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>The Faceboox</title>
+    <link rel="StyleSheet" href="static/css/style.css" type="text/css" title="8-bit Color Style">
+    <link rel="Shortcut icon" href="static/images/favicon.ico">
+</head>
+
+<body>
+    <center>
+        <table class="bordertable" width="700" cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+                <tr>
+                    <td>
+                        <table class="bottomborder" width="100%" cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td width="350" bgcolor="#3B5998"><img src="./static/images/logo-left.jpg"></td>
+                                    <td>
+                                        <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td bgcolor="#3B5998"><a href="profile.php"><img
+                                                                                src="./static/images/logo-right.jpg"
+                                                                                border="0"></a></td>
+                                                                    <td width="100%" bgcolor="#3B5998">&nbsp;</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <table width="100%" cellspacing="0" cellpadding="4" border="0">
+                                                            <tbody>
+                                                                <tr height="21">
+                                                                    <td bgcolor=#3B5998 valign=bottom>&nbsp;<a
+                                                                            class="menu" href="profile.php">home</a></td>
+                                                                    <td bgcolor=#3B5998 valign=bottom>&nbsp;<a
+                                                                            class="menu" href="#">search</a>
+                                                                    </td>
+                                                                    <td bgcolor=#3B5998 valign=bottom>&nbsp;<a
+                                                                            class="menu" href="#">invite</a>
+                                                                    </td>
+                                                                    <td bgcolor=#3B5998 valign=bottom>&nbsp;<a
+                                                                            class="menu"
+                                                                            href="backend/logout.php">logout</a></td>
+                                                                    <td width="100%" bgcolor="#3B5998">&nbsp;</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table width="100%" cellspacing="0" cellpadding="2" border="0">
+                            <tbody>
+                                <tr>
+                                    <td valign=top>
+                                        <table width="125" cellspacing="0" cellpadding="0" border="0">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <table class="dashedtable" cellspacing="0" cellpadding="0"
+                                                            width=100%>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td align=left>
+                                                                        <center>
+                                                                            <p>
+                                                                            <form method="GET" action="backend/search.php">
+                                                                                <input class="inputtext" name=name
+                                                                                    type=text style="width:85px">
+                                                                                <br>quick&nbsp;search&nbsp;<input
+                                                                                    type="submit" class="inputsubmit"
+                                                                                    style="width:22px" value="go">
+                                                                            </form>
+                                                                            </p>
+                                                                        </center>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <br>
+                                                        <table class="dashedtable" cellspacing=0 cellpadding=10
+                                                            width=100%>
+                                                            <tr>
+                                                                <td align=left>
+                                                                    <p style="color:#538ADC">
+                                                                        <a href="profile.php">My Profile</a><br>
+                                                                        <a href="#">My Friends</a><br>
+                                                                        <a href="#">My Groups</a><br>
+                                                                        <a href="messages.php">My Messages </a><b>[new]</b>
+                                                                        <br>
+                                                                        <a href="#">My Account</a><br>
+                                                                        <a href="#">My Privacy</a><br>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                    <td width="595" valign="top">
+                                        <table class="bordertable" width="100%" cellspacing="0" cellpadding="0"
+                                            border="1">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <table width="100%" cellspacing="0" cellpadding="2" border="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="white" bgcolor="#3B5998">
+                                                                        Profile (This is you)
+                                                                    </td>
+                                                                    <table width="100%" cellspacing="2" cellpadding="2"
+                                                                        border="0">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td valign=top>
+                                                                                    <table class='bordertable'
+                                                                                        cellspacing=0 cellpadding=0
+                                                                                        width=100%>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <table cellspacing=0
+                                                                                                    cellpadding=2
+                                                                                                    border=0 width=100%>
+                                                                                                    <tr>
+                                                                                                        <td class='white'
+                                                                                                            bgcolor=#3B5998
+                                                                                                            colspan=2>
+                                                                                                            Picture
+                                                                                                        </td>
+                                                                                                        <td align=right
+                                                                                                            class='white'
+                                                                                                            bgcolor=#3B5998>
+                                                                                                            [ <a href="#"
+                                                                                                                class=menu>edit</a>
+                                                                                                            ]
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                                <br>
+                                                                                                <center>
+                                                                                                    <table cellspacing=0
+                                                                                                        cellpadding=2
+                                                                                                        border=0
+                                                                                                        width=95%>
+                                                                                                        <tr>
+                                                                                                            <td
+                                                                                                                align=center>
+                                                                                                                <img style="width: 150px;"
+                                                                                                                    src="./static/images/profile/{{ profile.picture }}">
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                    </table>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                    <br>
+                                                                                    <table class='bordertable' cellspacing=0 cellpadding=0 width=100% valign=top>
+                                                                                        <tr>
+                                                                                          <td>
+                                                                                            <table class='bottomborder' cellspacing=0 cellpadding=2 border=0 width=100%>
+                                                                                              <tr>
+                                                                                                <td>
+                                                                                                  <a href="#">View My Friends</a>
+                                                                                                </td>
+                                                                                              </tr>
+                                                                                            </table>
+                                                                                          </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                          <td>
+                                                                                            <table class='bottomborder' cellspacing=0 cellpadding=2 border=0 width=100%>
+                                                                                              <tr>
+                                                                                                <td>
+                                                                                                  <a href="#">Edit your profile</a>
+                                                                                                </td>
+                                                                                              </tr>
+                                                                                            </table>
+                                                                                          </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                          <td>
+                                                                                            <table class='bottomborder' cellspacing=0 cellpadding=2 border=0 width=100%>
+                                                                                              <tr>
+                                                                                                <td>
+                                                                                                  <a href="#">My account preferences</a>
+                                                                                                </td>
+                                                                                              </tr>
+                                                                                            </table>
+                                                                                          </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                          <td>
+                                                                                            <table cellspacing=0 cellpadding=2 border=0 width=100%>
+                                                                                              <tr>
+                                                                                                <td>
+                                                                                                  <a href="#">My privacy preferences</a>
+                                                                                                </td>
+                                                                                              </tr>
+                                                                                            </table>
+                                                                                          </td>
+                                                                                        </tr>
+                                                                                      </table>
+                                                                                      <br>
+                                                                                      <table class='bordertable' cellspacing=0 cellpadding=0 width=100% valign=top>
+                                                                                        <tr>
+                                                                                          <td>
+                                                                                            <table cellspacing=0 cellpadding=2 border=0 width=100%>
+                                                                                              <tr>
+                                                                                                <td class='white' bgcolor=#3B5998>
+                                                                                                  Connection
+                                                                                                </td>
+                                                                                              </tr>
+                                                                                            </table>
+                                                                                            <table cellspacing=0 cellpadding=2 border=0 width=95% align=center>
+                                                                                              <tr>
+                                                                                                <td align=center>
+                                                                                                </td>
+                                                                                              </tr>
+                                                                                            </table>
+                                                                                          </td>
+                                                                                        </tr>
+                                                                                      </table>
+                                                                                      <br>
+                                                                                      <table class='bordertable' cellspacing=0 cellpadding=0 width=100% valign=top>
+                                                                                        <tr>
+                                                                                          <td>
+                                                                                            <table cellspacing=0 cellpadding=2 border=0 width=100%>
+                                                                                              <tr>
+                                                                                                <td class='white' bgcolor=#3B5998 colspan=2>
+                                                                                                  Friends at {{ profile.school }}
+                                                                                                </td>
+                                                                                              </tr>
+                                                                                            </table>
+                                                                                            &nbsp;<br>
+                                                                                            <center>
+                                                                                          </td>
+                                                                                        </tr>
+                                                                                      </table>
+                                                                                      
+                                                                                </td>
+                                                                                <td>
+                                                                                    <table cellspacing=0 cellpadding=2
+                                                                                        border=0 width=100%>
+                                                                                        <tr>
+                                                                                            <td class='white'
+                                                                                                bgcolor=#3B5998
+                                                                                                colspan=2>
+                                                                                                Information
+                                                                                            </td>
+
+                                                                                            <td align=right
+                                                                                                class='white'
+                                                                                                bgcolor=#3B5998>
+                                                                                                [ <a href="#"
+                                                                                                    class=menu>edit</a>
+                                                                                                ]
+                                                                                            </td>
+
+                                                                                        </tr>
+                                                                                    </table>
+
+                                                                                    <table class='bordertable'
+                                                                                        cellspacing=0 cellpadding=2
+                                                                                        border=0 width=100%>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <table cellspacing=0
+                                                                                                    cellpadding=0
+                                                                                                    border=0>
+                                                                                                    <tr>
+                                                                                                        <td>
+                                                                                                            <table
+                                                                                                                cellspacing=0
+                                                                                                                cellpadding=2
+                                                                                                                border=0>
+                                                                                                                <tr>
+                                                                                                                    <td
+                                                                                                                        colspan=2>
+                                                                                                                        <b>Account
+                                                                                                                            Info:</b>
+                                                                                                                    </td>
+
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                    <td
+                                                                                                                        style="width:104px">
+                                                                                                                        Name:
+                                                                                                                    </td>
+                                                                                                                    <td
+                                                                                                                        style="width:187px">
+                                                                                                                        {{ profile.name }}
+                                                                                                                    </td>
+                                                                                                                <tr>
+                                                                                                                <tr>
+                                                                                                                    <td>
+                                                                                                                        Member&nbsp;Since:
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        {{ profile.member_since | date('F j, Y') }}
+                                                                                                                    </td>
+                                                                                                                <tr>
+                                                                                                                <tr>
+                                                                                                                    <td>
+                                                                                                                        Last&nbsp;Update:
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        {{ profile.last_update | date('F j, Y') }}
+                                                                                                                    </td>
+                                                                                                                <tr>
+                                                                                                                <tr>
+
+                                                                                                                    <td>
+                                                                                                                        <b>Basic
+                                                                                                                            Info:</b>
+                                                                                                                    </td>
+                                                                                                                    <td align=right
+                                                                                                                        style="color:#538ae2">
+                                                                                                                        [
+                                                                                                                        <a
+                                                                                                                            href="#">edit</a>
+                                                                                                                        ]
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                    <td>
+                                                                                                                        School:
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        <a
+                                                                                                                            href='#'>{{ profile.school }}</a>
+                                                                                                                    </td>
+                                                                                                                <tr>
+                                                                                                                <tr>
+                                                                                                                    <td>
+                                                                                                                        Status:
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        {{ profile.status }}
+                                                                                                                    </td>
+                                                                                                                <tr>
+                                                                                                                <tr>
+                                                                                                                    <td>
+                                                                                                                        Sex:
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        {{ profile.sex }}
+                                                                                                                    </td>
+                                                                                                                <tr>
+                                                                                                                <tr>
+                                                                                                                    <td>
+                                                                                                                        Birthday:
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        {{ profile.birthday | date('F j, Y') }}
+                                                                                                                    </td>
+                                                                                                                <tr>
+                                                                                                                <tr>
+                                                                                                                    <td>
+                                                                                                                        Home&nbsp;Town:
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        {{ profile.home_town }}
+                                                                                                                    </td>
+                                                                                                                <tr>
+                                                                                                                <tr>
+                                                                                                                    <td>
+                                                                                                                        Highschool:
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        {{ profile.high_school }}
+                                                                                                                    </td>
+                                                                                                                <tr>
+                                                                                                                <tr>
+
+                                                                                                                    <td>
+                                                                                                                        <b>Contact
+                                                                                                                            Info:</b>
+                                                                                                                    </td>
+                                                                                                                    <td align=right
+                                                                                                                        style="color:#538ae2">
+                                                                                                                        [
+                                                                                                                        <a
+                                                                                                                            href="#">edit</a>
+                                                                                                                        ]
+                                                                                                                    </td>
+
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                    <td>
+                                                                                                                        Email:
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        {{ profile.email }}
+                                                                                                                    </td>
+                                                                                                                <tr>
+                                                                                                                <tr>
+                                                                                                                    <td>
+                                                                                                                        Screenname:
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        {{ profile.screenname }}
+                                                                                                                    </td>
+                                                                                                                <tr>
+                                                                                                                <tr>
+                                                                                                                    <td>
+                                                                                                                        Mobile:
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        {{ profile.mobile }}
+                                                                                                                    </td>
+                                                                                                                <tr>
+                                                                                                                <tr>
+                                                                                                                    <td>
+                                                                                                                        <b>Personal
+                                                                                                                            Info:</b>
+                                                                                                                    </td>
+                                                                                                                    <td align=right
+                                                                                                                        style="color:#538ae2">
+                                                                                                                        [
+                                                                                                                        <a
+                                                                                                                            href="#">edit</a>
+                                                                                                                        ]
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                    <td>
+                                                                                                                        Looking&nbsp;For:
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        {{ profile.looking_for }}
+                                                                                                                    </td>
+                                                                                                                <tr>
+                                                                                                                <tr>
+                                                                                                                    <td>
+                                                                                                                        Interested&nbsp;In:
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        {{ profile.interested_in }}
+                                                                                                                    </td>
+                                                                                                                <tr>
+                                                                                                                <tr>
+                                                                                                                    <td>
+                                                                                                                        Relationship&nbsp;Status:
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        {{ profile.relationship }}
+                                                                                                                    </td>
+                                                                                                                <tr>
+                                                                                                                <tr>
+                                                                                                                    <td>
+                                                                                                                        Political&nbsp;Views:
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        {{ profile.political_view }}
+                                                                                                                    </td>
+                                                                                                                <tr>
+                                                                                                                <tr>
+                                                                                                                    <td>
+                                                                                                                        Interests:
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        {{ profile.interests }}
+                                                                                                                    </td>
+                                                                                                                <tr>
+                                                                                                                <tr>
+                                                                                                                    <td>
+                                                                                                                        Music:
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                        {{ profile.favourite_music }}
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                            </table>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </table>
+
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <center>
+                                        <p>
+                                            <a href="about.html">about</a>&nbsp;&nbsp;
+                                            <a href="contact.html">contact</a>&nbsp;&nbsp;
+                                            <a href="jobs.html">jobs</a>&nbsp;&nbsp;
+                                            <!--<a href="faq.html">faq</a>&nbsp;&nbsp;-->
+                                            <a href="announce.html">announce</a>&nbsp;&nbsp;
+                                            <a href="media.html">press</a>&nbsp;&nbsp;
+                                            <a href="terms.html">terms</a>&nbsp;&nbsp;
+                                            <a href="policy.html">privacy</a>&nbsp;&nbsp;<span
+                                                title="ik">&nbsp;</span>&nbsp;&nbsp;
+                                            <br>a Mark Zuckerberg production
+                                            <br>Thefaceboox <span title="6ms">©</span> <span title="">20</span><span
+                                                title="360624">05</span>
+                                            <br>
+                                        </p>
+                                    </center>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+</body>
+
+</html>

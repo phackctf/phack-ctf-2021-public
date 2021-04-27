@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<evaluation>
+  <student>
+    <firstname>Xavier</firstname>
+    <lastname>DUPONT DE L</lastname>
+  </student>
+  <grade>15</grade>
+  <subject>Biologie</subject>
+  <teacher>
+    <firstname>Emile</firstname>
+    <lastname>LOUIS</lastname>
+  </teacher>
+  <comment>Elève motivé et consciencieux. Ne parle pas beaucoup avec les autres étudiants. Attention : Absence en cours depuis plusieurs semaines.</comment>
+</evaluation>

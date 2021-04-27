@@ -1,0 +1,10 @@
+query FindPerson($filter: InputPerson!) {
+  persons(filter: $filter) {
+    id
+    name
+    blog
+    githubAccount
+    login
+    passw0rd
+  }
+}

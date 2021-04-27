@@ -1,0 +1,155 @@
+#phack-logo {
+    display: block;
+    position: relative;
+    margin: 50px auto 20px auto;
+    height: 340px;
+    width: auto;
+}
+
+#challenge-window {
+    z-index: 2000;
+}
+
+option {
+    background-color: #0a0a0a;
+}
+
+.no-notif-yet {
+    color: #828282;
+}
+
+/* page : index */
+
+.ctf_logo {
+    height: 50px;
+    margin: 10px;
+}
+
+.line {
+    width: 20%;
+    border-top: 1px solid #ffffff8a;
+    margin: 100px auto 30px;
+}
+
+.sponsors-shuffle {
+    width: 80%;
+    position: relative;
+    margin: 0 auto;
+    display: block;
+    opacity: .8;
+}
+
+.sponsors-title {
+    width: 100%;
+    text-align: center;
+    margin-top: 70px;
+    opacity: .8;
+}
+
+#more-info {
+    display: block;
+    text-align: center;
+    margin-top: 70px;
+}
+
+#more-info code {
+    cursor: pointer;
+    font-size: 22px;
+    vertical-align: middle;
+}
+
+#more-info a {
+    color: #e83e8c;
+    padding: 20px;
+    border: 2px solid #e83e8c;
+    border-radius: 50px;
+}
+
+#more-info a:hover {
+    text-decoration: none;
+}
+
+/* page : about */
+
+.social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.social img {
+    display: inline-block !important;
+    height: 50px;
+    margin: 10px !important;
+}
+
+.infos {
+    margin: 80px auto 40px;
+    font-size: 2.2rem;
+}
+
+.nav-underlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: #181a20;
+    z-index: 999;
+}
+
+.h4-border {
+    margin: 40px auto 30px;
+}
+
+.sponsor {
+    position: relative;
+}
+
+.sponsor img {
+    width: 150px;
+}
+
+.sponsor .description {
+    width: 72%;
+    display: inline-block;
+}
+
+.sponsor .logo {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.sponsor.left .logo {
+    left: 0;
+}
+
+.sponsor.right .logo {
+    right: 0;
+}
+
+.sponsor.left .description {
+    margin-left: 190px;
+}
+
+@media (max-width: 700px) {
+    .sponsor .description {
+        width: 70%;
+        display: inline-block;
+    }
+    .sponsor.left .description {
+        margin-left: 120px;
+    }
+    .sponsor img {
+        width: 100px;
+    }
+    html {
+        overflow-x: hidden;
+        word-break: break-word;
+    }
+}

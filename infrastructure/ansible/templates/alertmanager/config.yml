@@ -1,0 +1,7 @@
+route:
+  receiver: 'discord'
+
+receivers:
+  - name: 'discord'
+    webhook_configs:
+      - url: 'http://discord_bot:9094'

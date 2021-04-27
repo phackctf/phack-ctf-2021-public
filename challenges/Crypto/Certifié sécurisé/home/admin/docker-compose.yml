@@ -1,0 +1,11 @@
+version: '2'
+
+# Challenge docker compose file
+
+services:
+  challenge:
+    image: phackctf/challenge
+    container_name: certificate
+    ports:
+      - 80:80
+      - 443:443

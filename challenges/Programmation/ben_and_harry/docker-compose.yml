@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  chall:
+    container_name: "ben-and-harry"
+    build: .
+    ports:
+      - "1664:1664"

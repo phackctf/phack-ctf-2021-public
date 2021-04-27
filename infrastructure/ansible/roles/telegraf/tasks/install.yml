@@ -1,0 +1,26 @@
+---
+- name: Import InfluxData GPG signing key
+  apt_key:
+    url: "https://repos.influxdata.com/influxdb.key"
+    state: present
+
+- name: Add InfluxData repository
+  apt_repository:
+    repo: deb https://repos.influxdata.com/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable
+    state: present
+
+- name: Install the latest version of Telegraf
+  apt:
+    update_cache: yes
+    name: telegraf
+    state: latest
+
+- name: Start telegraf service
+  service:
+    name: telegraf
+    state: started
+
+- name: Enable service telegraf
+  service:
+    name: telegraf
+    enabled: yes

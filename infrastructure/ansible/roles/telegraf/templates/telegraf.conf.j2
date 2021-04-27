@@ -1,0 +1,89 @@
+[agent]
+  interval = "10s"
+  round_interval = true
+  metric_batch_size = 1000
+  metric_buffer_limit = 10000
+  collection_jitter = "0s"
+  flush_interval = "10s"
+  flush_jitter = "0s"
+  precision = ""
+
+  ## Override default hostname, if empty use os.Hostname()
+  hostname = ""
+
+  ## If set to true, do no set the "host" tag in the telegraf agent.
+  omit_hostname = false
+
+###############################################################################
+#                            OUTPUT PLUGINS                                   #
+###############################################################################
+
+# Configuration for sending metrics to InfluxDB
+[[outputs.influxdb]]
+
+  urls = [ "{{ influxurl }}" ]
+  database = "{{ influxdb }}"
+
+  username = "{{ telegraf_user }}"
+  password = "{{ telegraf_password }}"
+
+  tagexclude = ["influxdb_database"]
+  [outputs.influxdb.tagpass]
+    influxdb_database = ["{{ influxdb }}"] 
+
+###############################################################################
+#                            INPUT PLUGINS                                    #
+###############################################################################
+
+
+# Read metrics about disk usage by mount point
+[[inputs.disk]]
+
+  # Disk space not needed as ofter as others
+  interval = "5m"
+  
+  ## Ignore mount points by filesystem type.
+  ignore_fs = ["tmpfs", "devtmpfs", "devfs", "iso9660", "overlay", "aufs", "squashfs"]
+
+  [inputs.disk.tags]
+    influxdb_database = "{{ influxdb }}"
+
+[[inputs.cpu]]
+  ## Whether to report per-cpu stats or not
+  percpu = true
+
+  ## Whether to report total system cpu stats or not
+  totalcpu = true
+
+  ## If true, collect raw CPU time metrics.
+  collect_cpu_time = false
+  report_active = false
+
+  [inputs.cpu.tags]
+    influxdb_database = "{{ influxdb }}"
+
+[[inputs.mem]]
+  [inputs.mem.tags]
+    influxdb_database = "{{ influxdb }}"
+
+# Read metrics about docker containers
+[[inputs.docker]]
+  endpoint = "unix:///var/run/docker.sock" 
+
+  ## Only collect metrics for these containers, collect all if empty 
+  container_names = []
+
+  ## Container states to include and exclude. Globs accepted.
+  ## When empty only containers in the "running" state will be captured.
+  container_state_include = [ "created", "restarting", "running", "removing", "paused", "exited", "dead" ]
+
+  ## Timeout for docker list, info, and stats commands 
+  timeout = "30s" 
+
+  ## Whether to report for each container per-device blkio (8:0, 8:1...) and 
+  ## network (eth0, eth1, ...) stats or not perdevice = true 
+  ## Whether to report for each container total blkio and network stats or not 
+  total = false
+
+  [inputs.docker.tags]
+    influxdb_database = "{{ influxdb }}"

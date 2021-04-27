@@ -1,0 +1,61 @@
+[monitoring]
+monitoring1 ansible_host= ansible_user=root private_ip=192.168.42.2
+
+[teams]
+team-1 ansible_host= ansible_user=root private_ip=192.168.42.4 team= team_members=
+team-2 ansible_host= ansible_user=root private_ip=192.168.42.5 team= team_members=
+team-3 ansible_host= ansible_user=root private_ip=192.168.42.6 team= team_members=
+team-4 ansible_host= ansible_user=root private_ip=192.168.42.7 team= team_members=
+team-5 ansible_host= ansible_user=root private_ip=192.168.42.8 team= team_members=
+team-6 ansible_host= ansible_user=root private_ip=192.168.42.9 team= team_members=
+team-7 ansible_host= ansible_user=root private_ip=192.168.42.10 team= team_members=
+team-8 ansible_host= ansible_user=root private_ip=192.168.42.11 team= team_members=
+team-9 ansible_host= ansible_user=root private_ip=192.168.42.12 team= team_members=
+team-10 ansible_host= ansible_user=root private_ip=192.168.42.13 team= team_members=
+team-11 ansible_host= ansible_user=root private_ip=192.168.42.14 team= team_members=
+team-12 ansible_host= ansible_user=root private_ip=192.168.42.15 team= team_members=
+team-13 ansible_host= ansible_user=root private_ip=192.168.42.16 team= team_members=
+team-14 ansible_host= ansible_user=root private_ip=192.168.42.17 team= team_members=
+team-15 ansible_host= ansible_user=root private_ip=192.168.42.18 team= team_members=
+team-16 ansible_host= ansible_user=root private_ip=192.168.42.19 team= team_members=
+team-17 ansible_host= ansible_user=root private_ip=192.168.42.20 team= team_members=
+team-18 ansible_host= ansible_user=root private_ip=192.168.42.21 team= team_members=
+team-19 ansible_host= ansible_user=root private_ip=192.168.42.22 team= team_members=
+team-20 ansible_host= ansible_user=root private_ip=192.168.42.23 team= team_members=
+team-21 ansible_host= ansible_user=root private_ip=192.168.42.24 team= team_members=
+team-22 ansible_host= ansible_user=root private_ip=192.168.42.25 team= team_members=
+team-23 ansible_host= ansible_user=root private_ip=192.168.42.26 team= team_members=
+team-24 ansible_host= ansible_user=root private_ip=192.168.42.27 team= team_members=
+team-25 ansible_host= ansible_user=root private_ip=192.168.42.28 team= team_members=
+team-26 ansible_host= ansible_user=root private_ip=192.168.42.29 team= team_members=
+team-27 ansible_host= ansible_user=root private_ip=192.168.42.30 team= team_members=
+team-28 ansible_host= ansible_user=root private_ip=192.168.42.31 team= team_members=
+team-29 ansible_host= ansible_user=root private_ip=192.168.42.32 team= team_members=
+team-30 ansible_host= ansible_user=root private_ip=192.168.42.33 team= team_members=
+team-31 ansible_host= ansible_user=root private_ip=192.168.42.34 team= team_members=
+team-32 ansible_host= ansible_user=root private_ip=192.168.42.35 team= team_members=
+team-33 ansible_host= ansible_user=root private_ip=192.168.42.36 team= team_members=
+team-34 ansible_host= ansible_user=root private_ip=192.168.42.37 team= team_members=
+team-35 ansible_host= ansible_user=root private_ip=192.168.42.38 team= team_members=
+team-36 ansible_host= ansible_user=root private_ip=192.168.42.39 team= team_members=
+team-37 ansible_host= ansible_user=root private_ip=192.168.42.40 team= team_members=
+team-38 ansible_host= ansible_user=root private_ip=192.168.42.41 team= team_members=
+team-39 ansible_host= ansible_user=root private_ip=192.168.42.42 team= team_members=
+team-40 ansible_host= ansible_user=root private_ip=192.168.42.43 team= team_members=
+team-41 ansible_host= ansible_user=root private_ip=192.168.42.44 team= team_members=
+team-42 ansible_host= ansible_user=root private_ip=192.168.42.45 team= team_members=
+team-43 ansible_host= ansible_user=root private_ip=192.168.42.46 team= team_members=
+team-44 ansible_host= ansible_user=root private_ip=192.168.42.47 team= team_members=
+team-45 ansible_host= ansible_user=root private_ip=192.168.42.48 team= team_members=
+team-46 ansible_host= ansible_user=root private_ip=192.168.42.49 team= team_members=
+team-47 ansible_host= ansible_user=root private_ip=192.168.42.50 team= team_members=
+team-48 ansible_host= ansible_user=root private_ip=192.168.42.51 team= team_members=
+team-49 ansible_host= ansible_user=root private_ip=192.168.42.52 team= team_members=
+team-50 ansible_host= ansible_user=root private_ip=192.168.42.53 team= team_members=
+team-51 ansible_host= ansible_user=root private_ip=192.168.42.54 team= team_members=
+
+[challenges]
+challenges-standalone-1 ansible_host= ansible_user=root private_ip=192.168.42.254
+
+[tomonitor:children]
+teams

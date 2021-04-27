@@ -1,0 +1,12 @@
+
+
+Cher Padawan,
+
+Je sais que tu te trompes souvent de mot de passe.
+J'ai donc ajouté une fonctionnalité qui permet d'afficher des * dès que tu saisis un caractère (sudo).
+Cela devrait t'aider.
+
+Bon courage,
+Ton Master
+
+..............

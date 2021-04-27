@@ -1,0 +1,288 @@
+version: '3.3'
+
+services:
+  openvpn:
+    cap_add:
+      - NET_ADMIN
+    image: kylemanna/openvpn
+    container_name: openvpn
+    ports:
+      - "1194:1194/udp"
+    restart: always
+    volumes:
+      - ./openvpn-data/conf:/etc/openvpn
+    networks:
+      REMOVED_network:
+        ipv4_address: 12.42.0.42
+
+  dns:
+    restart: always
+    image: strm/dnsmasq
+    container_name: dns
+    volumes:
+      - ./dnsmasq.conf:/etc/dnsmasq.conf
+    cap_add:
+      - NET_ADMIN
+    networks:
+      REMOVED_network:
+        ipv4_address: 12.42.0.53
+
+  fuzz-me:
+    image: rg.fr-par.scw.cloud/REMOVED/fuzz_me:latest
+    container_name: fuzz-me
+    restart: always
+    networks:
+      REMOVED_network:
+        ipv4_address: 12.42.0.2
+
+  the-faceboox:
+    image: rg.fr-par.scw.cloud/REMOVED/the_faceboox:latest
+    container_name: "the-faceboox"
+    restart: always
+    networks:
+      REMOVED_network:
+        ipv4_address: 12.42.0.3
+
+  hello-world:
+    image: rg.fr-par.scw.cloud/REMOVED/hello_world:latest
+    container_name: "hello-world"
+    restart: always
+    networks:
+      REMOVED_network:
+        ipv4_address: 12.42.0.4
+
+  wall-e:
+    image: rg.fr-par.scw.cloud/REMOVED/wall_e:latest
+    container_name: "wall-e"
+    restart: always
+    networks:
+      REMOVED_network:
+        ipv4_address: 12.42.0.6
+
+  x-tension:
+    image: rg.fr-par.scw.cloud/REMOVED/x_tension:latest
+    container_name: "x-tension"
+    restart: always
+    networks:
+      REMOVED_network:
+        ipv4_address: 12.42.0.7
+
+  a-maze-ing:
+    image: rg.fr-par.scw.cloud/REMOVED/a_maze_ing:latest
+    container_name: "a-maze-ing"
+    restart: always
+    networks:
+      REMOVED_network:
+        ipv4_address: 12.42.0.8
+
+  ben-and-harry:
+    image: rg.fr-par.scw.cloud/REMOVED/ben_and_harry:latest
+    container_name: "ben-and-harry"
+    restart: always
+    networks:
+      REMOVED_network:
+        ipv4_address: 12.42.0.9
+
+  phacktory:
+    image: rg.fr-par.scw.cloud/REMOVED/phacktory:latest
+    container_name: "phacktory"
+    restart: always
+    networks:
+      REMOVED_network:
+        ipv4_address: 12.42.0.10
+
+  agenda_db:
+    container_name: agenda-db
+    image: postgres:12
+    restart: always
+    networks:
+      agenda_network:
+    environment:
+      POSTGRES_PASSWORD: secret_agenda_123
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  agenda_backend:
+    image: rg.fr-par.scw.cloud/REMOVED/agenda_backend:latest
+    container_name: "agenda_backend"
+    restart: always
+    networks:
+      agenda_network:
+      REMOVED_network:
+        ipv4_address: 12.42.0.22
+    environment:
+      SPRING_PROFILES_ACTIVE: postgres
+    depends_on:
+      - "agenda_db"
+    command:
+      [
+        "wait-for-it.sh",
+        "agenda_db:5432",
+        "--",
+        "java",
+        "-jar",
+        "/app/agenda-app.jar",
+      ]
+
+  agenda_frontend:
+    container_name: agenda_frontend
+    image: rg.fr-par.scw.cloud/REMOVED/agenda_frontend:latest
+    restart: always
+    depends_on:
+      - "agenda_backend"
+    networks:
+      REMOVED_network:
+        ipv4_address: 12.42.0.12
+
+  agenda2_db:
+    container_name: agenda2-db
+    image: postgres:12
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: secret_agenda_123
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      agenda2_network:
+
+  agenda2_backend:
+    image: rg.fr-par.scw.cloud/REMOVED/agenda_2_backend:latest
+    container_name: "agenda2-backend"
+    restart: always
+    networks:
+      agenda2_network:
+      REMOVED_network:
+        ipv4_address: 12.42.0.23
+    environment:
+      SPRING_PROFILES_ACTIVE: postgres
+    depends_on:
+      - "agenda2_db"
+    command:
+      [
+        "wait-for-it.sh",
+        "agenda2_db:5432",
+        "--",
+        "java",
+        "-jar",
+        "/app/agenda-app.jar",
+      ]
+
+  agenda2_frontend:
+    container_name: agenda2_frontend
+    image: rg.fr-par.scw.cloud/REMOVED/agenda_2_frontend:latest
+    restart: always
+    depends_on:
+      - "agenda2_backend"
+    networks:
+      REMOVED_network:
+        ipv4_address: 12.42.0.13
+
+  harduino:
+    image: rg.fr-par.scw.cloud/REMOVED/harduino:latest
+    container_name: "harduino"
+    restart: always
+    networks:
+      REMOVED_network:
+        ipv4_address: 12.42.0.14
+
+  journee-portes-ouvertes:
+    image: rg.fr-par.scw.cloud/REMOVED/portes_ouvertes:latest
+    container_name: "journee-portes-ouvertes"
+    restart: always
+    expose:
+      - 5000
+      - 5012
+      - 5022
+      - 5036
+      - 5039
+      - 5116
+      - 5345
+      - 5555
+      - 5689
+      - 5690
+      - 5750
+      - 5851
+      - 5888
+      - 5916
+      - 5969
+      - 5698
+      - 5478
+      - 5321
+      - 5864
+      - 5127
+      - 5695
+      - 5568
+      - 5986
+      - 5987
+      - 80
+    networks:
+      REMOVED_network:
+        ipv4_address: 12.42.0.16
+
+  sudoku:
+    image: rg.fr-par.scw.cloud/REMOVED/sudoku:latest
+    container_name: "sudoku"
+    hostname: "sudoku"
+    restart: always
+    networks:
+      REMOVED_network:
+        ipv4_address: 12.42.0.17
+
+  sudoku-2:
+    image: rg.fr-par.scw.cloud/REMOVED/sudoku_2:latest
+    container_name: "sudoku-2"
+    hostname: "sudoku-2"
+    restart: always
+    networks:
+      REMOVED_network:
+        ipv4_address: 12.42.0.18
+
+  graduated:
+    image: rg.fr-par.scw.cloud/REMOVED/graduated:latest
+    container_name: "graduated"
+    hostname: "graduated"
+    restart: always
+    networks:
+      REMOVED_network:
+        ipv4_address: 12.42.0.19
+
+  toBOrNot2B:
+    image: rg.fr-par.scw.cloud/REMOVED/tobeornot2be:latest
+    container_name: "toBOrNot2B"
+    hostname: "toBOrNot2B"
+    restart: always
+    networks:
+      REMOVED_network:
+        ipv4_address: 12.42.0.20
+
+  mr-weak:
+    image: rg.fr-par.scw.cloud/REMOVED/mr_weak:latest
+    container_name: "mr-weak"
+    hostname: "secr3t-pr0j3cts"
+    restart: always
+    networks:
+      REMOVED_network:
+        ipv4_address: 12.42.0.21
+
+  android-lock:
+    image: rg.fr-par.scw.cloud/REMOVED/android_lock:latest
+    container_name: "android-lock"
+    restart: always
+    networks:
+      REMOVED_network:
+        ipv4_address: 12.42.0.24
+
+networks:
+  REMOVED_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 12.42.0.0/24
+  agenda_network:
+  agenda2_network:

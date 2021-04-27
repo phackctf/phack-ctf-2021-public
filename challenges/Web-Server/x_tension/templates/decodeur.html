@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html style="min-width:300px;min-height:200px;">
+  <head>
+    <title>X-tension</title>
+    <meta name="description" content="P'Hack CTF : The X-tension challengr" \>
+    <meta name="author" content="Eagleslam" \>
+    <meta charset="utf-8">
+    <link rel="icon" href="favicon.ico" />
+    <link href="static/css/main.css" rel="stylesheet" />
+  </head>
+
+  <body style="background-image: url('https://miro.medium.com/max/1082/1*vcpjeAnV4ROsE024Ad8a4g.png'); background-size: cover;">
+  	<div class="container" style="background-color: white;
+      opacity: 0.8;
+      width: 30%;
+      margin: auto;
+      padding: 50px;
+      border-radius: 10px;
+      margin-top: 50px;
+      text-align: center;">
+
+      <div class="logo">
+        <img src="static/images/logo.png" alt="logo" />
+      </div>
+
+  		<p style="text-align: center; font-size: -webkit-xxx-large; margin-top: 0;">
+        P'Hack CTF décodeur : Solution de Sophie
+      </p>
+
+  		<input type=text id="ciphered_text" style="width: 100%; height: 50px;font-size: larger;" placeholder="Texte à déchiffrer" maxlength="88"/>
+      <button id="uncipher" style="margin-top: 20px;
+      width: 120px;
+      height: 30px;
+      background-color: lightskyblue;
+      opacity: 1;
+      font-size: large;">Déchiffrer</button>
+
+
+      <div style="display: none; margin-top: 35px; text-align: center; font-size: 1.4rem;" id='response'>
+        <span style="font-weight: bold; text-decoration: underline;">Texte déchiffré : </span><br/>
+        <span id="unciphered"/>
+      </div>
+
+  	</div>
+  </body>
+
+  <script type="text/javascript">
+      document.getElementById('uncipher').onclick = function() {
+        var event = document.createEvent('Event');
+        event.initEvent('uncipher_request');
+        document.dispatchEvent(event);
+       };
+
+
+      document.addEventListener('usEvent', function (event) {
+          var data = event.detail;
+
+          if (data) {
+            document.getElementById('response').style.display = "block";
+            document.getElementById('unciphered').textContent = data
+          }
+          else {
+            document.getElementById('response').style.display = "none";
+          }
+      });
+  </script>
+</html>

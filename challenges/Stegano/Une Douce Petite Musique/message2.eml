@@ -1,0 +1,95 @@
+FCC: owl://patricia@halliday.com@outlook.office.com/Sent%20Items
+X-Identity-Key: id3
+X-Account-Key: account4
+From: patricia@halliday.com
+Subject: Message secret
+To: david@halliday.com
+Message-ID: <6213cd81-f4ba-e769-d9d0-2e4b92b92c32@ineat.fr>
+Organization: Halliday
+Date: Tue, 9 Mar 2021 20:44:50 +0100
+X-Mozilla-Draft-Info: internal/draft; vcard=0; receipt=0; DSN=0; uuencode=0;
+ attachmentreminder=0; deliveryformat=4
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.1
+Content-Type: multipart/mixed;
+ boundary="------------2099D876B1A0A6C22EC858F9"
+Content-Language: en-US
+MIME-Version: 1.0
+
+--------------2099D876B1A0A6C22EC858F9
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Message secret</title>
+  </head>
+  <body>
+    <p>Coucou David,</p>
+    <p>Ci-joint un message super secret, personne ne va jamais trouver
+      avec notre technique futuriste !</p>
+    <p>XOXO<br>
+    </p>
+    <div class="moz-signature">-- <br>
+    </div>
+    <div class="moz-signature">Patricia<br>
+      <table style="background: none; border-width: 0px; border: 0px;
+        margin: 0; padding: 0;" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+          <tr>
+            <td style="width: 85px; text-align: center; padding-top: 0;
+              padding-bottom: 5px; padding-left: 20px; padding-right:
+              20px; border-top: 0; border-bottom: 0; border-left: 0;
+              border-right: solid 3px #ff0042;"><br>
+            </td>
+            <td style="min-width: 180px; width: 270px; padding-top: 0;
+              padding-bottom: 0; padding-left: 20px; padding-right:
+              20px;"><br>
+            </td>
+            <td style="width: 130px"><br>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
+
+--------------2099D876B1A0A6C22EC858F9
+Content-Type: audio/midi;
+ name="musique1.mid"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+ filename="musique1.mid"
+
+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
+
+--------------2099D876B1A0A6C22EC858F9--

@@ -1,0 +1,9 @@
+---
+- name: Pull latest challenges
+  shell: docker-compose -f ~/challenges/docker-compose.yml pull
+
+- name: Start challenges
+  shell: docker-compose -f ~/challenges/docker-compose.yml up -d
+
+- name: Restart dns
+  shell: docker-compose -f ~/challenges/docker-compose.yml restart dns

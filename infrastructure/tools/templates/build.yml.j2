@@ -1,0 +1,85 @@
+# =============================================================================
+# THIS FILE HAS BEEN GENERATED USING JINJA TEMPLATING
+# DO NOT EDIT MANUALLY
+# =============================================================================
+
+name: Challenges
+
+on:
+  push:
+    branches: [ master, feat/ci ]
+  workflow_dispatch:
+    inputs:
+      challenge:
+        description: 'Challenge to build (or "all")'
+        required: false
+      deploy:
+        description: 'Set "yes" to deploy'
+        required: false
+
+jobs:
+  # This job checks which challenge needs to be build
+  changes_checker:
+    runs-on: ubuntu-latest
+    outputs:
+      {% for chall in challs -%}
+      {{ chall.name }}: {% raw %}${{ steps.filter.outputs.{% endraw %}{{ chall.name }}{% raw %} }}{% endraw %}
+      {% endfor %}
+    steps:
+    - uses: actions/checkout@v2
+    - uses: dorny/paths-filter@v2
+      id: filter
+      with:
+        filters: |
+          {% for chall in challs -%}
+          {{ chall.name }}: 
+            - 'challenges/{{ chall.category }}/{{ chall.name }}/**'
+          {% endfor %}
+  build:
+    needs: changes_checker
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Login to phackctf registry
+        uses: docker/login-action@v1
+        with:
+          registry: rg.fr-par.scw.cloud/REMOVED
+          username: nologin
+          password: {% raw %}${{ secrets.REGISTRY_TOKEN }}{% endraw %}
+      {%- for chall in challs %}
+      - name: Build and push {{ chall.name }}
+        if: {% raw %}${{ needs.changes_checker.outputs.{% endraw %}{{ chall.name }} == 'true' || github.event.inputs.challenge == '{{ chall.name }}' || github.event.inputs.challenge == 'all'{% raw %} }}{% endraw %}
+        id: docker_build_{{ chall.name }}
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: ./challenges/{{ chall.category }}/{{ chall.name }}
+          tags: rg.fr-par.scw.cloud/REMOVED/{{ chall.name }}:latest
+      {%- endfor %}
+
+  deploy:
+    needs: build
+    if: {% raw %}${{ github.event.inputs.deploy == 'yes' }}{% endraw %}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install ansible
+        run: sudo apt-get install ansible
+      - name: Change permissions for private key file
+        run: chmod 600 ./infrastructure/ansible/github_phack
+      - name: Run playbook
+        uses: dawidd6/action-ansible-playbook@v2
+        with:
+          playbook: playbook.yml
+          directory: ./infrastructure/ansible
+          options: |
+            --verbose
+            --tags challenges
+            --inventory-file inventories/scaleway
+            --key-file github_phack

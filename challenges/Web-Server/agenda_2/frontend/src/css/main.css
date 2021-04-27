@@ -1,0 +1,238 @@
+#table-talks,
+#confName,
+#subTalks {
+  display: none;
+}
+
+#table-conferences {
+  margin-bottom: 60px;
+}
+
+#table-conferences thead th {
+  text-align: center;
+}
+
+#table-conferences thead th:last-child {
+  width: 150px;
+}
+
+#tables {
+  width: 60%;
+  margin: auto;
+}
+
+body {
+  background: url('../images/background.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin: auto;
+  color: white;
+  padding-bottom: 60px;
+  opacity: 0.9;
+}
+
+.title {
+  text-align: center;
+  font-size: 4.2rem;
+  color: black;
+}
+
+.subtitle {
+  font-size: 2.5rem;
+  color: black;
+  text-decoration: underline;
+  text-align: center;
+  margin-top: 60px;
+}
+
+#confName {
+  font-size: 1.5rem;
+  color: black;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.fixed-table-container {
+  background-color: white;
+}
+
+.showButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+}
+.showButton a {
+  width: 100%;
+  max-width: 240px;
+  height: 40px;
+  font-size: 0.8rem;
+  font-weight: 900;
+  color: #ff4655;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 0 0 1px inset rgba(236, 232, 225, 0.3);
+  position: relative;
+}
+
+.showButton a.white:hover > p {
+  color: #ece8e1;
+}
+
+.showButton a.white > p {
+  background: #ece8e1;
+  color: #0f1923;
+}
+
+.showButton a.white > p span.base {
+  border: 1px solid transparent;
+}
+
+.showButton a.transparent:hover > p {
+  color: #ece8e1;
+}
+
+.showButton a.transparent:hover > p span.text {
+  box-shadow: 0 0 0 1px #ece8e1;
+}
+
+.showButton a.transparent > p {
+  background: #0f1923;
+  color: #ece8e1;
+}
+
+.showButton a.transparent > p span.base {
+  border: 1px solid #ece8e1;
+}
+
+.showButton a:after, div a:before {
+  content: "";
+  width: 0px;
+  position: absolute;
+  height: 8px;
+  background: #0f1923;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.showButton a:before {
+  right: 0;
+  left: initial;
+}
+
+.showButton a p {
+  margin: 0;
+  height: 40px;
+  line-height: 40px;
+  box-sizing: border-box;
+  z-index: 1;
+  left: 0;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.showButton a p span.base {
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  border: 1px solid #ff4655;
+}
+
+.showButton a p span.base:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  left: -1px;
+  top: -1px;
+  background: #0f1923;
+  position: absolute;
+  transition: 0.3s ease-out all;
+}
+
+.showButton a p span.bg {
+  left: -5%;
+  position: absolute;
+  background: #ff4655;
+  width: 0;
+  height: 100%;
+  z-index: 3;
+  transition: 0.3s ease-out all;
+  transform: skewX(-10deg);
+}
+
+.showButton a p span.text {
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.showButton a p span.text:after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  right: 0;
+  bottom: 0;
+  background: #0f1923;
+  position: absolute;
+  transition: 0.3s ease-out all;
+  z-index: 5;
+}
+
+.showButton a:hover {
+  color: #ece8e1;
+}
+
+.showButton a:hover span.bg {
+  width: 110%;
+}
+
+.showButton a:hover span.text:after {
+  background: #ece8e1;
+}
+
+#profilePhoto {
+  width: 35%;
+  float: left;
+}
+
+#profileName {
+  float: right;
+  color: black;
+}
+
+#profileGithub {
+  float: right;
+  color: black;
+}
+
+#profileBlog {
+  float: right;
+  color: black;
+}
+
+.modal-dialog {
+    max-width: 1000px !important;
+}
+
+#login, #logout {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+}
+
+.flag {
+  padding: 40px 20px 20px 250px;
+  background-color: white;
+  color: black;
+}

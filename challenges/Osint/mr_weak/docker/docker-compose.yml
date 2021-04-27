@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  chall:
+    container_name: "secr3t-pr0j3cts"
+    build: .
+    hostname: secr3t-pr0j3cts
+    ports:
+      - "6969:22"

@@ -1,0 +1,20 @@
+apply plugin: "jacoco"
+
+jacoco {
+    toolVersion = findProperty("jacocoVersion") ?: "0.8.2"
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled true
+    }
+
+    test {
+        jacoco {
+            excludes += ["**/Application.**"]
+        }
+    }
+
+}
+test.finalizedBy(project.tasks.jacocoTestReport)

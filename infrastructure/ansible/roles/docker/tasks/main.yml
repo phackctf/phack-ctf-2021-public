@@ -1,0 +1,22 @@
+---
+- name: Ensure docker is installed
+  apt:
+    name: docker.io
+    state: present
+
+- name: Ensure docker is started
+  systemd:
+    service: docker
+    enabled: true
+    state: started
+
+- name: Ensure docker-compose is installed
+  apt:
+    name: docker-compose
+    state: present
+
+- name: Docker login to private registry
+  docker_login:
+    url: rg.fr-par.scw.cloud/REMOVED
+    username: nologin
+    password: REMOVED

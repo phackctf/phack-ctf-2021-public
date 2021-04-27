@@ -1,0 +1,86 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.13.RELEASE'
+    }
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'project-report'
+
+apply from: "${rootDir}/gradle/jacoco.gradle"
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
+repositories {
+    mavenLocal()
+    jcenter()
+}
+
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
+
+dependencies {
+
+    // spring
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'javax.xml.bind:jaxb-api:2.3.0'
+
+    // tools
+    implementation 'org.projectlombok:lombok:1.18.12'
+    implementation 'org.apache.commons:commons-lang3:3.9'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.18'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.9.10'
+    implementation 'com.google.guava:guava:28.2-jre'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+
+    // graphql
+    implementation 'com.graphql-java-kickstart:graphql-spring-boot-starter:5.10.0'
+    implementation 'com.graphql-java-kickstart:graphql-java-tools:5.6.1'
+
+    // graphql IDE
+    runtimeOnly 'com.graphql-java-kickstart:graphiql-spring-boot-starter:5.10.0'
+    runtimeOnly 'com.graphql-java-kickstart:playground-spring-boot-starter:5.10.0'
+    runtimeOnly 'com.graphql-java-kickstart:altair-spring-boot-starter:5.10.0'
+
+    // in memory db
+    runtimeOnly 'com.h2database:h2'
+
+    // fix security issues
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.10.3'
+
+    // test
+    testImplementation 'org.mockito:mockito-core:3.3.0'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'com.graphql-java-kickstart:graphql-spring-boot-starter-test:5.10.0'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
+
+    runtimeOnly 'org.postgresql:postgresql:42.2.10'
+
+}
+
+// Enables passing command line options to bootRun (e.g ./gradlew -Dspring.profiles.active=development bootRun)
+bootRun {
+    systemProperties System.properties
+}
+
+wrapper {
+    gradleVersion = '6.2.1'
+}
+

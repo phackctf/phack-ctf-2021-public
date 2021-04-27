@@ -1,0 +1,30 @@
+bash-5.1# ls -al /home
+total 112
+drwxr-xr-x    1 root     root          4096 Mar  2 15:24 .
+drwxr-xr-x    1 root     root          4096 Mar  2 15:37 ..
+drwxr-sr-x    2 Aiko     nogroup       4096 Mar  2 14:47 Aiko
+drwxr-sr-x    2 Betsy    nogroup       4096 Mar  2 14:47 Betsy
+drwxr-sr-x    2 Cyra     nogroup       4096 Mar  2 14:47 Cyra
+drwxr-sr-x    2 Dai      nogroup       4096 Mar  2 14:47 Dai
+drwxr-sr-x    2 Elien    nogroup       4096 Mar  2 14:47 Elien
+drwxr-sr-x    2 Fleur    nogroup       4096 Mar  2 14:47 Fleur
+drwxr-sr-x    2 Graxana  nogroup       4096 Mar  2 14:47 Graxana
+drwxr-sr-x    2 Haya     nogroup       4096 Mar  2 14:47 Haya
+drwxr-sr-x    2 Izar     nogroup       4096 Mar  2 14:47 Izar
+drwxr-sr-x    2 Jaya     nogroup       4096 Mar  2 14:47 Jaya
+drwxr-sr-x    2 Kimiko   nogroup       4096 Mar  2 14:47 Kimiko
+drwxr-sr-x    2 Lune     nogroup       4096 Mar  2 14:47 Lune
+drwxr-sr-x    2 Mai      nogroup       4096 Mar  2 15:24 Mai
+drwxr-sr-x    2 Nigel    nogroup       4096 Mar  2 15:24 Nigel
+drwxr-sr-x    2 Obispo   nogroup       4096 Mar  2 15:24 Obispo
+drwxr-sr-x    2 Phackito nogroup       4096 Mar  2 15:24 PHackito
+drwxr-sr-x    2 Quoc     nogroup       4096 Mar  2 15:24 Quoc
+drwxr-sr-x    2 Ray      nogroup       4096 Mar  2 15:24 Ray
+drwxr-sr-x    2 Santu    nogroup       4096 Mar  2 15:24 Santu
+drwxr-sr-x    2 Tadeo    nogroup       4096 Mar  2 15:24 Tadeo
+drwxr-sr-x    2 Urb      nogroup       4096 Mar  2 15:24 Urb
+drwxr-sr-x    2 Volny    nogroup       4096 Mar  2 15:24 Volny
+drwxr-sr-x    2 Waly     nogroup       4096 Mar  2 15:24 Waly
+drwxr-sr-x    2 Xanio    nogroup       4096 Mar  2 15:24 Xanio
+drwxr-sr-x    2 Yun      nogroup       4096 Mar  2 15:24 Yun
+drwxr-sr-x    2 Zenon    nogroup       4096 Mar  2 15:24 Zenon

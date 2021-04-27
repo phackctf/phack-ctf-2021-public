@@ -1,0 +1,206 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#console-iframe {
+  width: 100%;
+  height: 100%;
+}
+
+/**
+  Set height to 100vh to avoid issues on mobile
+  Set display to flex mode where the content takes up all the space
+*/
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/**
+  Divide the header into 2 parts
+  The area above the panel as brand
+  The remaining area as navigation
+  The goal is to center the brand logo here
+*/
+
+header{
+  display: flex;
+	align-items: center;
+}
+
+/**
+  Use the same flex-basis as the width of the panel
+*/
+
+#brand{
+  flex-basis: 200px;
+}
+
+/**
+  Align the brand logo and name at the center
+*/
+
+nav a{
+  width: 100%;
+  text-align: center;
+}
+
+/**
+  Separate the brand logo and name with a margin
+*/
+
+i.fa{
+  margin-right: 10px;
+}
+
+#navigation{
+  flex: 1;
+	text-align: center;
+}
+
+/**
+  Area to show the file name. 
+  Set margin left equal to the width of the panel on large screens
+*/
+
+
+#tab{
+  margin-left: 200px;
+  font-size: 0.8rem;
+}
+
+/**
+  A container encapsulating the panel, editor and console
+  Stack this vertically on mobile with media queries
+*/
+
+#root{
+  flex: 1;
+  display: flex;
+}
+
+/**
+  Get file name and description here.
+  Show views, likes and upvotes here
+  Add a section to display ads.
+  Use flex-basis instead of min-width or width;
+*/
+
+#panel{
+  flex-basis: 256px;
+}
+
+/**
+  This area comprises of only the editor and console
+  Use a horizontal flexbox on large screens
+  And a vertical flexbox on small screens
+  As a child of #root, it occupies all the remaining space once the panel has take some of it
+*/
+
+#ide{
+  flex: 1;
+  display: flex;
+}
+
+/**
+  Use Fibonacci ratio as line height
+*/
+
+#editor{
+  line-height: 1.6;
+}
+
+/**
+  This is added programmatically by the split.js library
+  Give it a background color, no repeat and center it
+*/
+
+.gutter {
+    background-color: #eee;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+/**
+  Set a cursor when the person hovers over this divider
+*/
+
+.gutter.gutter-vertical {
+    background-image:  url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=');
+    cursor: ns-resize;
+}
+
+/**
+  Set a cursor when the person hovers over this divider
+*/
+
+.gutter.gutter-horizontal {
+    background-image:  url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
+   cursor: ew-resize;
+}
+
+/**
+  Clear the default curved border at the top left and top right
+  Reduce the default padding to make it look better
+*/
+
+#tab ul li a{
+  border-radius: 0px 0px 0px 0px;
+  padding: 0.1rem 3rem;
+}
+
+#tab ul li:last-child a{
+  border-radius: 0px 0px 0px 0px;
+  padding: 0.1rem 0.5rem;
+}
+
+/**
+  Write all rules targeting a responsive breakpoint in BootStrap 4 which is 768 px
+*/
+
+@media (max-width: 768px) {
+  /**
+    Let the root stack the panel, editor and console vertically below each other with the flexbox
+  */
+  #brand{
+    flex-basis: 0px;
+  }
+  
+  #root{
+    flex-direction: column;
+  }
+  
+  /**
+    The flex-basis property controls the width of the panel in a horizontal flexbox layout and the height of the panel in a vertical flexbox layout
+    Adjust it accordingly for mobile devices
+  */
+  
+  #panel{
+    flex-basis: 48px;
+  }
+  
+  /**
+    The IDE element contains the editor and console which appear inside a horizontal flexbox on large screens
+    Stack it up vertically
+  */
+  
+  #ide{
+    flex-direction: column;
+  }
+  
+  /**
+    The Tab with the filename has a margin-left equal to the width of the panel on large screens
+    Clear this margin on mobile phones
+  */
+  #tab{
+    margin-left: 0px;
+  }
+  
+  i.fa{
+    margin-right: 0px;
+  }
+}

@@ -1,0 +1,62 @@
+<!doctype html>
+
+<html lang="en" style="background-color: lightgrey;">
+  <head>
+    <title>X-tension</title>
+    <meta name="description" content="P'Hack CTF : The X-tension challenge" \>
+    <meta name="author" content="Eagleslam" \>
+    <meta charset="utf-8">
+    <link rel="icon" href="favicon.ico" />
+
+    <link href="static/css/main.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div id="no-chrome" style="text-align: center; margin: 120px; display: none">
+      <img style="width: 15%;" src="http://4.bp.blogspot.com/-SAlsUK_Hwkw/TYGj8pt-kbI/AAAAAAAAAqE/blsfUwJWdbU/s1600/Google%2BChrome%2Bicon%2Bnew.png" />
+
+      <p style="width: 60%;
+        margin: auto;
+        text-align: center;
+        font-size: xxx-large;
+        color: red;">
+        Ce challenge a été conçu pour être réalisé avec le navigateur Chrome..
+      </p>
+      <p style="font-style: oblique;">
+        Oui, je sais...
+      </p>
+    </div>
+
+    <div id="no-extension" style="text-align: center; margin: 120px;">
+      <img style="width: 15%; position: absolute; right: 105px; top: 10px;" src="http://unice.fr/universite/dsi/contenus-riches/images/Migration%20GLPI/noun_Idea_638772.png" />
+
+      <!--
+         TODO : Ne pas oublier d'installer l'extension depuis https://bit.ly/3ufGW3f
+      -->
+      <p style="width: 60%;
+        margin: auto;
+        text-align: center;
+        font-size: xxx-large;
+        color: red;">
+        Le décodeur de fichiers ne peut pas fonctionner sans l'extension !
+      </p>
+
+
+      <div class="logo2">
+        <img src="static/images/logo.png" alt="logo" />
+      </div>
+    </div>
+
+    <div id="app-container" style="text-align: center;">
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+
+    if (!isChrome) {
+      document.getElementById("no-extension").style.display = "none";
+      document.getElementById("no-chrome").style.display = "block";
+    }
+  </script>
+</html>

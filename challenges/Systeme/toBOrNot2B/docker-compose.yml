@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  chall:
+    container_name: "toBOrNotToB"
+    build: .
+    hostname: toBOrNotToB
+    ports:
+      - "2222:22"

@@ -1,0 +1,15 @@
+------------------
+
+
+Cher professeur,
+
+Merci de saisir les notes de vos élèves dans la base de données dans les plus brefs délais car la fin du trimestre approche.
+
+PS:
+M. DUPONT est toujours absent. Nous lui recherchons un remplaçant au plus vite.
+
+Bon courage,
+Votre recteur.
+
+
+------------------

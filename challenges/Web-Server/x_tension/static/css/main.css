@@ -1,0 +1,19 @@
+.logo {
+  width: 40%;
+  margin: auto;
+}
+
+.logo2 {
+  width: 20%;
+  margin: auto;
+}
+
+.logo img,
+.logo2 img {
+  width: 100%
+}
+
+
+html {
+  background-color: lightgrey;
+}

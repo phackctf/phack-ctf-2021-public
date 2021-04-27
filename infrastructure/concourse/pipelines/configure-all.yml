@@ -1,0 +1,51 @@
+var_sources:
+- name: credentials
+  type: dummy
+  config:
+    vars:
+      private_key: |
+        -----BEGIN OPENSSH PRIVATE KEY-----
+
+        [REMOVED]
+
+        -----END OPENSSH PRIVATE KEY-----
+      ansible_private_key: |
+        -----BEGIN OPENSSH PRIVATE KEY-----
+
+        [REMOVED]
+
+        -----END OPENSSH PRIVATE KEY-----
+
+resource_types:
+- name: ansible-playbook
+  type: docker-image
+  source:
+    repository: troykinsella/concourse-ansible-playbook-resource
+    tag: latest
+
+resources:
+  - name: source-code
+    type: git
+    icon: github
+    source:
+      uri: git@github.com:[REMOVED]/phack-ctf.git
+      branch: "master"
+      private_key: ((credentials:private_key))
+  - name: ansible
+    type: ansible-playbook
+    source:
+      debug: false
+      user: root
+      ssh_private_key: ((credentials:ansible_private_key))
+      verbose: v
+
+jobs:
+  - name: configure-infra
+    plan:
+      - get: source-code
+      - put: ansible
+        params:
+          check: true
+          inventory: inventories/scaleway
+          playbook: playbook.yml
+          path: source-code/infrastructure/ansible

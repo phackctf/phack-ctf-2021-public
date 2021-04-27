@@ -1,0 +1,33 @@
+---
+- name: Print current team member
+  debug:
+    msg: "{{ item }}"
+
+- name: Upload client key generator
+  template:
+    src: client.exp
+    dest: "~/challenges/{{ item }}_client.exp"
+    mode: +x
+
+- name: Check if client conf was already created
+  stat:
+    path: "{{ team }}/{{ item }}.ovpn"
+  register: "client_conf"
+
+- name: Ensure openvpn is stopped
+  shell: docker-compose -f ~/challenges/docker-compose.yml stop openvpn
+  when: "not client_conf.stat.exists"
+
+- name: Generate OpenVPN Client Keys
+  command: "~/challenges/{{ item }}_client.exp"
+  when: "not client_conf.stat.exists"
+
+- name: Generate openvpn client config
+  shell: "docker-compose -f ~/challenges/docker-compose.yml run --name {{ item }} --rm openvpn ovpn_getclient {{ item }} > {{ team }}/{{ item }}.ovpn"
+  when: "not client_conf.stat.exists"
+
+- name: Fetch client config
+  fetch:
+    src: "{{ team }}/{{ item }}.ovpn"
+    dest: "static/openvpn/{{ team }}/{{ item }}.ovpn"
+    flat: yes

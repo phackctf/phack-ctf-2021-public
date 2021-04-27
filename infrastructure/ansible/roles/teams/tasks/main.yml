@@ -1,0 +1,62 @@
+---
+- name: Create challenges directory
+  file:
+    state: directory
+    name: ~/challenges
+
+- name: Upload teams compose file
+  template:
+    src: challenges-compose.yml
+    dest: ~/challenges/docker-compose.yml
+
+- name: Upload dnsmasq config
+  template:
+    src: dnsmasq.conf
+    dest: ~/challenges/dnsmasq.conf
+
+- name: Check if Server conf was already generated
+  stat:
+    path: "~/challenges/openvpn-data/conf"
+  register: server_conf
+
+- name: Ensure openvpn is stopped
+  shell: docker-compose -f ~/challenges/docker-compose.yml stop openvpn
+  when: not server_conf.stat.exists
+
+- name: Generate OpenVPN Server Config
+  shell: "docker-compose -f ~/challenges/docker-compose.yml run --rm openvpn ovpn_genconfig -u udp://{{ ansible_host }}"
+  when: not server_conf.stat.exists
+
+- name: Check if Server Keys were already generated
+  stat:
+    path: "~/challenges/openvpn-data/conf/pki"
+  register: server_keys
+
+- name: Install expect
+  apt:
+    state: present
+    name: expect
+
+- name: Upload server key generator
+  template:
+    src: server.exp
+    dest: ~/challenges/server.exp
+    mode: +x
+
+- name: Generate OpenVPN Server Keys
+  command: ~/challenges/server.exp
+  when: not server_keys.stat.exists
+
+- name: Upload OpenVPN config
+  template:
+    src: openvpn.conf
+    dest: ~/challenges/openvpn-data/conf/openvpn.conf
+
+- name: Create team directory
+  file:
+    state: directory
+    name: "{{ team }}"
+
+- name: Generate client config
+  include_tasks: vpn_client_configuration.yml
+  loop: "{{ team_members.split(',') }}"

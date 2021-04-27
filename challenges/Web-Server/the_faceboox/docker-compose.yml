@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  webapp:
+    build: .
+    ports:
+      - "80:80"
+    container_name: "thefaceboox"

@@ -1,0 +1,6 @@
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    priv0:
+      addresses: [{{ private_ip }}/24]

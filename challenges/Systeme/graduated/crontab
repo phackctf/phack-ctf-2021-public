@@ -1,0 +1,3 @@
+SHELL=/bin/bash
+
+* * * * * /usr/bin/python3 /home/rector/integrator.py >> /home/rector/integrator.log 2>&1

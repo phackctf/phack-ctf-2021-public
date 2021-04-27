@@ -1,0 +1,36 @@
+---
+- name: Create ctfd directory
+  file:
+    state: directory
+    name: ~/ctfd
+
+- name: Upload ctfd compose file
+  template:
+    src: ctfd-compose.yml
+    dest: ~/ctfd/docker-compose.yml
+
+- name: Pull latest ctfd
+  shell: docker-compose -f ~/ctfd/docker-compose.yml pull
+
+- name: Install s3cmd
+  apt:
+    state: present
+    name: s3cmd
+
+- name: Upload s3cmd config
+  template:
+    src: s3cfg
+    dest: ~/.s3cfg
+
+- name: Upload backup script
+  template:
+    src: ctfd-s3-backup.sh
+    dest: ~/ctfd-s3-backup.sh
+    mode: u+x
+
+- name: Creates a cron for ctfd backup
+  ansible.builtin.cron:
+    name: ctfd backup
+    hour: "*/12"
+    user: root
+    job: ~/ctfd-s3-backup.sh

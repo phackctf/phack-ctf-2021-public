@@ -1,0 +1,53 @@
+X: 1
+T: from la-bamba.mid
+M: 4/4
+L: 1/4
+Q:1/4=150
+K:G % 1 sharps
+V:1
+z6 | \
+G, a' G a | \
+B, F, F G | \
+b/ b/ E f' z | \
+D z2 b' | \
+F/ b/ z2 D/ F/ | \
+e D E F | \
+G b b E | \
+f' D b' F | \
+b/ z1 D F/ e | \
+D/ E/ F z1 D | \
+C F z2 | \
+e G e' b' | \
+D z3 | \
+F B G z1 | \
+d' A, z2 | \
+D b' F b | \
+D A, F B | \
+e' G c b | \
+D A, F D | \
+C F b D | \
+A, F B e' | \
+D E C, F | \
+G b b E | \
+f' D b' F | \
+b D F e | \
+D E F G | \
+b b z2 | \
+E f' D z1 | \
+b'/ F/ b D z1 | \
+F e D E | \
+F D C F | \
+f g e' b' | \
+F d b' G | \
+d' B e' b' | \
+F b G F | \
+e b G f' | \
+f' D F B | \
+G d' A, F | \
+f g A, F | \
+c' D E C,| \
+F G b b | \
+E f' D b' | \
+F b D F | \
+e D E F | \
+a'' z3 | \

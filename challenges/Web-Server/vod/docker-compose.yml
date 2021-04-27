@@ -1,0 +1,39 @@
+version: "3.8"
+services:
+  tor-proxy:
+    container_name: "vod-tor-proxy"
+    image: goldy/tor-hidden-service:0.3.5.8
+    links:
+      - tor-website
+    environment:
+        # hello and again will share the same onion v3 address
+        SERVICE2_TOR_SERVICE_HOSTS: 1337:tor-website:80
+        SERVICE2_TOR_SERVICE_VERSION: '3'
+        # tor v3 address private key base 64 encoded
+        SERVICE2_TOR_SERVICE_KEY: |
+            [removed]
+    depends_on:
+      - tor-website
+
+  tor-website:
+    container_name: "vod-website"
+    build: .
+    hostname: vod
+    ports:
+      - 80:80
+    volumes:
+      - ./web:/var/www/html/
+    depends_on:
+      - tor_db
+
+  tor_db:
+    container_name: "vod-database"
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'vod'
+      MYSQL_USER: 'jean-michel'
+      MYSQL_PASSWORD: 'zutquelestmonmotdepasse'
+      MYSQL_ROOT_PASSWORD: 'zutquelestmonmotdepasse'
+    expose:
+      - '3306'

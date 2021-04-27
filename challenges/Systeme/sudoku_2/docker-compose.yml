@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  chall:
+    container_name: "sudoku-v2"
+    build: .
+    hostname: sudoku-v2
+    ports:
+      - "2222:22"

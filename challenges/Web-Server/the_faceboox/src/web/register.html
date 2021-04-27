@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The Faceboox</title>
+  <link rel="StyleSheet" href="static/css/style.css" type="text/css" title="8-bit Color Style">
+  <link rel="Shortcut icon" href="static/images/favicon.ico">
+</head>
+
+<body>
+  <center>
+    <table class="bordertable" width="700" cellspacing="0" cellpadding="0" border="0">
+      <tbody>
+        <tr>
+          <td>
+            <table class="bottomborder" width="100%" cellspacing="0" cellpadding="0" border="0">
+              <tbody>
+                <tr>
+                  <td width="350" bgcolor="#3B5998"><img src="./static/images/logo-left.jpg"></td>
+                  <td>
+                    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                      <tbody>
+                        <tr>
+                          <td>
+                            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                              <tbody>
+                                <tr>
+                                  <td bgcolor="#3B5998"><a href="index.html"><img src="./static/images/logo-right.jpg" border="0"></a></td>
+                                  <td width="100%" bgcolor="#3B5998">&nbsp;</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <table width="100%" cellspacing="0" cellpadding="4" border="0">
+                              <tbody>
+                                <tr height="21">
+                                  <td valign="bottom" bgcolor="#3B5998">&nbsp;<a class="menu" href="login.html">login</a></td>
+                                  <td valign="bottom" bgcolor="#3B5998">&nbsp;<a class="menu" href="register.html">register</a></td>
+                                  <td valign="bottom" bgcolor="#3B5998">&nbsp;<a class="menu" href="about.html">about</a></td>
+                                  <td valign="bottom" bgcolor="#3B5998">&nbsp;<a class="menu" href="faq.html">faq</a></td>
+                                  <td width="100%" bgcolor="#3B5998">&nbsp;</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <table width="100%" cellspacing="0" cellpadding="2" border="0">
+              <tbody>
+                <tr>
+                  <td valign="top">
+                    <table width="105" cellspacing="0" cellpadding="0" border="0">
+                      <tbody>
+                        <tr>
+                          <td>
+                            <table class="dashedtable" width="100%" cellspacing="0" cellpadding="2">
+                              <tbody>
+                                <tr>
+                                  <td align="right">
+                                    <p>
+                                    </p>
+                                    <form method="post" action="./backend/login.php">
+                                      Email:<br> <input type="hidden" name="noerror" value="1"><input type="text" class="inputtext" name="email" value="" id="email" size="20"><br> Password:<br>
+                                      <input type="password" class="inputtext" name="pass" id="pass" size="20"><br>
+                                      <center><input type="submit" class="inputsubmit" value="login">&nbsp;
+                                        <input type="button" class="inputsubmit" value="register" onclick="javascript:document.location='register.html';"></center>
+                                    </form>
+                                    <!--<br>-->
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                  <td width="595" valign="top">
+                    <table class="bordertable" width="100%" cellspacing="0" cellpadding="0" border="1">
+                      <tbody>
+                        <tr>
+                          <td>
+
+                            <table width="100%" cellspacing="0" cellpadding="2" border="0">
+                              <tbody>
+                                <tr>
+                                  <td class="white" bgcolor="#3B5998">Registration</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <center>
+                              <table width="95%" cellspacing="0" cellpadding="0" border="0">
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      <center>
+                                        <table width="90%" cellspacing="0" cellpadding="0" border="0">
+                                          <tbody>
+                                            <tr>
+                                              <td>
+                                                &nbsp;<br>
+                                                To register for thefaceboox.com, just fill in the four fields below. You will
+                                                have a chance to enter additional information and submit a picture once you
+                                                have registered.
+                                                <p>
+                                                </p>
+                                                <center>
+                                                  <form action="#">
+                                                    <table cellspacing="0" cellpadding="0" border="0">
+                                                      <tbody>
+                                                        <tr>
+                                                          <td>
+                                                            <table cellspacing="0" cellpadding="2" border="0">
+                                                              <tbody>
+                                                                <tr>
+                                                                  <td>Name:</td>
+                                                                  <td><input type="text" class="inputtext" name="name" value="" size="30"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                  <td>Status:</td>
+                                                                  <td><select class="inputtext" name="status">
+                                                                      <option value="1">Student (Full-Time)
+                                                                      </option>
+                                                                      <option value="5">Grad Student
+                                                                      </option>
+                                                                      <option value="2">Alumnus/Alumna
+                                                                      </option>
+                                                                      <option value="3">Faculty
+                                                                      </option>
+                                                                      <option value="4">Staff
+                                                                      </option>
+                                                                    </select>
+                                                                  </td>
+                                                                </tr>
+                                                                <tr>
+                                                                  <td>Email: (school)</td>
+                                                                  <td><input type="text" class="inputtext" name="email" value="" size="30"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                  <td>Password*: (choose)&nbsp;</td>
+                                                                  <td><input type="password" class="inputtext" name="pass" size="30"></td>
+                                                                </tr>
+                                                              </tbody>
+                                                            </table>
+                                                          </td>
+                                                        </tr>
+                                                        <tr>
+                                                          <td>
+                                                            <table cellspacing="0" cellpadding="3" border="0">
+                                                              <tbody>
+                                                                <tr>
+                                                                  <td><input type="checkbox" name="terms" value="1"></td>
+                                                                  <td>
+                                                                    I have read and understood the <a href="terms.html">Terms of Use</a>,
+                                                                    and I<br>agree to them.</td>
+                                                                </tr>
+                                                                <tr>
+                                                                  <td valign="top" align="right">*</td>
+                                                                  <td>You can choose any password. <font color="red">It
+                                                                      should not be your school password.</font>
+                                                                  </td>
+                                                                </tr>
+                                                              </tbody>
+                                                            </table>
+                                                          </td>
+                                                        </tr>
+                                                      </tbody>
+                                                    </table>
+                                                    <p>
+                                                      <input type="button" value="Register Now!" class="inputsubmit" onclick="document.getElementById('notyetimplemented').setAttribute('style', 'color:red');">
+                                                      <p id="notyetimplemented" style="visibility: hidden">Not yet implemented</p>
+                                                    </p>
+                                                  </form>
+                                                </center>
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </center>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </center>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <center>
+              <p><a href="about.html">about</a>&nbsp;&nbsp;
+                <a href="contact.html">contact</a>&nbsp;&nbsp;
+                <a href="jobs.html">jobs</a>&nbsp;&nbsp;
+                <!--<a href="faq.html">faq</a>&nbsp;&nbsp;-->
+                <a href="announce.html">announce</a>&nbsp;&nbsp;
+                <a href="media.html">press</a>&nbsp;&nbsp;
+                <a href="terms.html">terms</a>&nbsp;&nbsp;
+                <a href="policy.html">privacy</a>&nbsp;&nbsp;<span title="ik">&nbsp;</span>&nbsp;&nbsp;
+                <br>a Mark Zuckerberg production
+                <br>Thefaceboox <span title="5ms">©</span> <span title="">20</span><span title="362904">05</span>
+                <br>
+              </p>
+            </center><br>
+          </td>
+        </tr>
+      </tbody>
+    </table><br>
+  </center>
+
+</body>
+
+</html>

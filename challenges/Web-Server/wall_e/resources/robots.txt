@@ -1,0 +1,3 @@
+User-Agent: WallEbot
+Allow: /index.html
+Disallow: /8059dd56-3bfb-11eb-adc1-0242ac120002/nothing-here.txt

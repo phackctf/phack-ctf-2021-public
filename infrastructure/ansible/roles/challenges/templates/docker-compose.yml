@@ -1,0 +1,77 @@
+version: '3'
+
+services:
+  # VOD --
+
+  tor-proxy:
+    container_name: "vod-tor-proxy"
+    image: goldy/tor-hidden-service:0.3.5.8
+    links:
+      - tor-website
+    environment:
+        # hello and again will share the same onion v3 address
+        SERVICE2_TOR_SERVICE_HOSTS: 1337:tor-website:80
+        SERVICE2_TOR_SERVICE_VERSION: '3'
+        # tor v3 address private key base 64 encoded
+        SERVICE2_TOR_SERVICE_KEY: |
+            REMOVED
+    depends_on:
+      - tor-website
+    networks:
+      vod:
+
+  tor-website:
+    container_name: "vod-website"
+    image: rg.fr-par.scw.cloud/REMOVED/vod:latest
+    hostname: vod
+    restart: always
+    depends_on:
+      - tor_db
+    networks:
+      vod:
+
+  tor_db:
+    container_name: "vod-database"
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'vod'
+      MYSQL_USER: 'jean-michel'
+      MYSQL_PASSWORD: 'zutquelestmonmotdepasse'
+      MYSQL_ROOT_PASSWORD: 'zutquelestmonmotdepasse'
+    networks:
+      vod:
+
+  # WAPITI --
+
+  wapiti-elasticsearch:
+    container_name: wapiti-elasticsearch
+    image: rg.fr-par.scw.cloud/REMOVED/wapiti-elastic:latest
+    restart: always
+    environment:
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      ELASTIC_PASSWORD: "iAmSexy-&-iknowIt"
+    networks:
+      wapiti:
+
+  wapiti-kibana:
+    container_name: wapiti-kibana
+    image: rg.fr-par.scw.cloud/REMOVED/wapiti-kibana:latest
+    restart: always
+    ports:
+      - 5601:5601
+    depends_on:
+      - wapiti-elasticsearch
+    networks:
+      wapiti:
+
+  # WIKI BOT --
+
+  wiki-bot:
+    container_name: wiki-bot
+    image: rg.fr-par.scw.cloud/REMOVED/wiki_bot:latest
+    restart: always
+
+networks:
+  wapiti:
+  vod:

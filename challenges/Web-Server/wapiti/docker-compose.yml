@@ -1,0 +1,28 @@
+version: '3.2'
+
+services:
+  elasticsearch:
+    container_name: wapiti-elasticsearch
+    build: Elastic/
+    environment:
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      ELASTIC_PASSWORD: "iAmSexy-&-iknowIt"
+    networks:
+      - wapiti-chall
+
+  kibana:
+    container_name: wapiti-kibana
+    build: Kibana
+    ports:
+      - 80:5601
+    networks:
+      - wapiti-chall
+    depends_on:
+      - elasticsearch
+
+networks:
+  wapiti-chall:
+    driver: bridge
+
+volumes:
+  elasticsearch:

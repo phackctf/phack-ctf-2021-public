@@ -1,0 +1,42 @@
+version: "3.1"
+
+services:
+  db:
+    container_name: agenda-db
+    image: postgres:12
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: secret_agenda_123
+    expose:
+      - 5432
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    container_name: agenda-backend
+    build: backend/.
+    restart: always
+    environment:
+      SPRING_PROFILES_ACTIVE: postgres
+    ports:
+      - 8080:8080
+    depends_on:
+      - "db"
+    command:
+      [
+        "wait-for-it.sh",
+        "db:5432",
+        "--",
+        "java",
+        "-jar",
+        "/app/agenda-app.jar",
+      ]
+
+  frontend:
+    container_name: agenda-front
+    build: frontend/.
+    ports:
+      - 80:80

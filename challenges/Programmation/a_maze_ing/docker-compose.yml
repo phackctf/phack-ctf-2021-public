@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  webapp:
+    build: .
+    ports:
+      - "4242:4242"
+    container_name: "a-maze-ing"

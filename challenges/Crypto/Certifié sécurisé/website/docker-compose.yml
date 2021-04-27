@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  challenge:
+    image: phackctf/challenge
+    container_name: certificate
+    ports:
+      - 80:80
+      - 443:443
